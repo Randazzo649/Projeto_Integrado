@@ -1,0 +1,58 @@
+Plataforma de Gestão Empresarial / Ecossistema de empresas (ERP)
+
+Muitas telas:
+
+RH
+Financeiro
+Estoque
+Compras
+Vendas
+Produção
+Logística
+CRM
+
+-Módulo Financeiro
+Contas a pagar
+Contas a receber
+Fluxo de caixa
+Orçamentos
+Centros de custo
+
+-Módulo RH
+
+Funcionários
+Cargos
+Férias
+Folha de pagamento
+Benefícios
+
+-Módulo Comercial
+Clientes
+Orçamentos
+Vendas
+Contratos
+
+-Módulo Estoque
+Produtos
+Categorias
+Entradas
+Saídas
+Inventário
+
+-Módulo Compras
+Fornecedores
+Cotações
+Pedidos de compra
+Módulo Produção
+Ordens de produção
+Matérias-primas
+Controle de qualidade
+
+Personalização:
+
+Empresas ativam/desativam módulos
+Regras fiscais diferentes
+Campos customizados
+Perfis de acesso diferentes
+
+______________________________________________
