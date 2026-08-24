@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UnitHub</title>
+        <link rel="stylesheet" th:href="@{/css/responsividade.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+    </head>
+    <body class="d-flex flex-column">
+        <!-- parte superior da tela, com background -->
+        <header class="">
+            <div id="supbar" class="d-flex flex-row justify-content-between align-items-center px-5 h-25">
+                <img th:src="@{/imgs/logo_full.png}" id="logo" alt="">
+                <input id="login" class="px-3" value="LOGIN" type="button">
+            </div><br>
+            <div class="d-flex flex-row justify-content-end w-100">
+                <div id="mainTxt" class="d-flex flex-column justify-content-start">
+                    <h1>SOLUÇÃO COMPLETA</h1>
+                    <p id="mainP" class="w-75">Descomplique sua empresa: do Financeiro aos Recursos Humanos, uma única plataforma.</p>
+                    <input type="button"  id="experimente" value="EXPERIMENTE">
+                </div>
+            </div>
+        </header><br><br>
+        <!-- parte principal -->
+        <main>
+            <!-- apresentação dos módulos -->
+            <div id="descubra">
+                <h2 class="div_title">DESCUBRA NOSSA PLATAFORMA</h2>
+                <div id="modulos_apresentacao" class="d-flex flex-column w-100 gap-3">
+                    <div class="d-flex flex-row w-100 px-5 gap-3">
+                        <card style="background-color: rgb(254, 210, 225);">
+                            <h3 class="card_titulo">Gestão de Estoque</h3>
+                            <p class="card_descricao"></p>
+                        </card>
+                        <card  style="background-color: rgb(254, 210, 209);">
+                             <h3 class="card_titulo">Gestão de RH</h3>
+                             <p class="card_descricao"></p>
+                        </card>
+                       <card  style="background-color: rgb(255, 221, 196);">
+                            <h3 class="card_titulo">Gestão Financeira</h3>
+                            <p class="card_descricao"></p>
+                       </card>
+                    </div>
+                    <div class="d-flex flex-row w-100 px-5 gap-3">
+                       <card style="background-color: rgb(255, 221, 196);">
+                            <h3 class="card_titulo">Gestão de Vendas</h3>
+                            <p class="card_descricao"></p>
+                       </card>
+                       <card style="background-color: rgb(254, 210, 225);">
+                            <h3 class="card_titulo">Comunicação entre setores</h3>
+                            <p class="card_descricao"></p>
+                       </card>
+                       <card style="background-color: rgb(254, 210, 209);">
+                            <h3 class="card_titulo"> O QUE EU PONHO AQUI ??</h3>
+                            <p class="card_descricao"></p>
+                       </card>
+                    </div>
+                </div>
+            </div><br>
+            <!-- respostas para as principais perguntas -->
+            <div id="perguntas" class="w-100">
+                <br><br><h2 class="div_title">PERGUNTAS FREQUENTES</h2> <br>
+                <div class="accordion" id="accordionExample">
+
+
+                    <!-- acordions -->
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDois" aria-controls="collapseDois">
+                                O que é a UniHub ?
+                            </button>
+                        </h2>
+                        <div id="collapseDois" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p> AINDA NÃO SEI O QUE COLOCAR </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTres" aria-controls="collapseTres">
+                                Como contrato a UniHub ?
+                            </button>
+                        </h2>
+                        <div id="collapseTres" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p> AINDA NÃO SEI O QUE COLOCAR </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseQuatro" aria-controls="collapseQuatro">
+                                Como funciona o suporte da UniHub ?
+                            </button>
+                        </h2>
+                        <div id="collapseQuatro" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p> AINDA NÃO SEI O QUE COLOCAR </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </main>
+        <!-- parte debaixo, com backgroun em gradiente -->
+        <footer class="d-flex flex-row">
+            <div class="elemento_footer w-25 d-flex align-items-center justify-content-center" id="logo">
+                <img th:src="@{/imgs/LOGO_SMALL.png}" id="logo_baixo" alt="">
+            </div>
+            <hr>
+            <div id="contatos" class="elemento_footer d-flex flex-column"  >
+                <p class="w-75">A comunicação é a estrutura por trás de qualquer grande perceria. Vamos conversar sobre como podemos trabalhar juntos ?</p>
+                <div class="d-flex flex-row">
+
+                </div>
+                <div class="d-flex flex-row">
+
+                </div>
+            </div>
+            <div id="selos" class="d-flex w-50">
+
+            </div>
+        </footer>
+
+    </body>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</html>

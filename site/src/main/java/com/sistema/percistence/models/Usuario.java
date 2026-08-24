@@ -1,4 +1,4 @@
-package com.sistema.app.models;
+package com.sistema.percistence.models;
 
 public class Usuario {
     private long id;
