@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UnitHub</title>
+        <link rel="stylesheet" th:href="@{/css/solicitacao_cadastro.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    </head>
+    
+    <body>
+            <div id="superior" class="d-flex justify-content-between align-items-center px-5 py-3">
+                <div> <img th:src="@{/imgs/logo_full.png}" alt="" id="logo"> </div>
+            </div>
+            <main>
+                <div>
+                    <h1>CADASTRO</h1>
+                    <h3 class="ms-3">EMPRESA</h3>
+                </div>
+                <div id="form" class="d-flex flex-column w-100 gap-3">
+                    <div class="d-flex w-100 gap-3"> 
+                        <div class="w-75"><label for="razao">razão social</label><br><input type="text" id="razao" class="form_txt_in"></div> 
+                        <div class="w-25"><label for="cnpj_in">cnpj</label><br><input type="text" id="cnpj_in" class="form_txt_in"></div> 
+                    </div>
+                    <div class="d-flex w-100 gap-3">
+                        <div class="w-75"><label for="nome_fantasia_in">nome fantasia</label><br><input type="text" id="nome_fantasia_in" class="form_txt_in"></div> 
+                        <div class="w-25"><label for="telefone_in">telefone</label><br><input type="text" id="telefone_in" class="form_txt_in"></div> 
+                    </div>
+                    <div class="d-flex w-100">
+                        <div class="w-100"><label for="endereco_in">endereço</label><br><input type="text" id="endereco_in" class="form_txt_in"></div> 
+
+                    </div>
+                    <div class="d-flex w-100 gap-3">
+                        <div class="w-50"><label for="email_in">email</label><br><input type="text" id="email_in" class="form_txt_in"></div> 
+                        <div class="w-50"><label for="senha_in">senha</label><br><input type="text" id="senha_in" class="form_txt_in"></div> 
+                    </div>
+                    <div class="d-flex w-100">
+                        <input type="file" style="display: none;" id="file_in">
+                        <button class="w-100" id="file_in_btn"></button>
+                    </div>
+                    <div class="d-flex w-100 justify-content-end gap-5">
+                        <input type="button" id="add_funcs_btn" value="ADICIONAR FUNCIONARIOS">
+                        <input type="button" id="salvar_btn" value="SALVAR">
+                    </div>
+                </div>
+            </main>
+    </body>
+    <script src="@{/js/config.js}"></script>
+    <script th:src="@{/js/solicitacao_cadastro.js}"></script>
+</html>
