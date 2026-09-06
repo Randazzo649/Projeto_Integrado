@@ -65,7 +65,7 @@ public class UsuarioRepository extends RepositoryTemplate<Usuario> {
 	protected String toJson(ResultSet rs) throws SQLException {
 		StringBuilder json = new StringBuilder("{");
 
-        json.append("\"id\": ").append(rs.getInt("id")).append(", ");
+        json.append("\"id\": ").append(rs.getLong("id")).append(", ");
         json.append("\"nome\": \"").append(rs.getString("nome")).append("\", ");
         json.append("\"email\": \"").append(rs.getString("email")).append("\", ");
         json.append("\"foto\": \"").append(rs.getString("foto")).append(", \"");

@@ -12,6 +12,8 @@ public class DataBaseConfig{
     private static String senha = "";
     private static String usuario = "root";
 
+    private DataBaseConfig(){}
+
     public static DataBaseConfig getInstance(){
         if(conf == null)
             conf = new DataBaseConfig();
