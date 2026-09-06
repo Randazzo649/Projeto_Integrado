@@ -13,18 +13,56 @@
         <header class="">
             <div id="supbar" class="d-flex flex-row justify-content-between align-items-center px-5 h-25">
                 <img th:src="@{/imgs/logo_full.png}" id="logo" alt="">
-                <input id="login" class="px-3" value="LOGIN" type="button">
+                <input id="login" data-bs-toggle="modal" data-bs-target="#meuModal" class="px-3" value="LOGIN" type="button">
             </div><br>
             <div class="d-flex flex-row justify-content-end w-100">
                 <div id="mainTxt" class="d-flex flex-column justify-content-start">
                     <h1>SOLUÇÃO COMPLETA</h1>
                     <p id="mainP" class="w-75">Descomplique sua empresa: do Financeiro aos Recursos Humanos, uma única plataforma.</p>
-                    <input type="button"  id="experimente" value="EXPERIMENTE">
+                    <input type="button" id="experimente" value="EXPERIMENTE">
                 </div>
             </div>
         </header><br><br>
         <!-- parte principal -->
         <main>
+            
+            <!-- modal de login -->
+            <div class="modal fade" id="meuModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h3 class="modal-title">Login</h3>
+
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal">
+                            </button>
+                        </div>
+
+                        <div class="modal-body d-flex gap-4">
+                            <div class="w-50">
+                                <div class="d-flex flex-column">
+                                    <label for="email_in">Email:</label> <input class="credencial_in" type="email" id="email_in">
+                                </div><br>
+                                <div class="d-flex flex-column">
+                                    <label for="senha_in">Senha:</label> <input class="credencial_in" type="password" id="senha_in">
+                                </div><br>
+                                <div class="d-flex justify-content-center">
+                                    <input type="button" id="entrar" value="ENTRAR">
+                                </div>
+                            </div>
+                            <div class="w-50 d-flex flex-column align-items-center pt-4">
+                                <b>Administrador, ainda não tem seu acesso?</b>
+                                <span>Faça a solicitação</span><br>
+                                <input type="button" id="solic" value="SOLICITAÇÃO DE CADASTRO">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
             <!-- apresentação dos módulos -->
             <div id="descubra">
                 <h2 class="div_title">DESCUBRA NOSSA PLATAFORMA</h2>

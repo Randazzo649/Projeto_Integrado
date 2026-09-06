@@ -20,6 +20,7 @@ header{
     border-radius: 20px;
     font-weight: 700;
     border: none;
+    padding: 5px 40px;
 }
 
 h1{
@@ -39,7 +40,8 @@ h1{
     background-color: #fc7642;
     color: white;
     border: none;
-    max-width: 150px;
+    max-width: 200px;
+    padding: 5px 40px;
 }
 
 .div_title{
@@ -94,4 +96,31 @@ footer{
 }
 #logo_baixo{
     width: 80%;
+}
+
+.credencial_in{
+    height: 35px;
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 5px;
+}
+.modal-dialog{
+    max-width: 52vw;
+}
+#entrar{
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: #fc7642;
+    color: white;
+    border: none;
+    max-width: 150px;
+    padding: 10px 40px;
+}
+#solic{
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: rgb(255, 97, 146);
+    color: white;
+    border: none;
+    padding: 5px 10px;
 }
