@@ -13,4 +13,9 @@ public class CuradoriaController {
         return "curadoria_home.html";
     }
 
+    @GetMapping("/solicitacoes")
+    public String fornecerPaginaDeAvaliacaoDeSolicitacoes(){
+        return "solicitacoes_avaliacao.html";
+    }
+
 }

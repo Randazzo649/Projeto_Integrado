@@ -1,0 +1,60 @@
+
+#superior{
+    background-color: black;
+}
+#logo{
+    max-width: 200px;
+}
+#usuario_infos{
+    color: white;
+    
+}
+#usuario_foto{
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+main{
+    padding: 50px 80px 0px 80px; 
+}
+
+#empresas{
+    overflow-y: auto;
+    scrollbar-width: thin;
+    max-height: 65vh;
+}
+
+.empresa_infos{
+
+}
+.empresa_infos div{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.rejeitar_btn{
+    padding: 5px 20px ;
+    border-radius: 15px;
+    border:none;
+    color: white;
+    background-color: #b50000;
+}
+.aprovar_btn{
+    padding: 5px 20px ;
+    border-radius: 15px;
+    border:none;
+    color: white;
+    background-color: #078500;
+}
+.accordion-button {
+    --bs-accordion-btn-bg: #d3d3d3;
+    --bs-accordion-active-bg: #f0c080;
+    --bs-accordion-btn-color: #333;
+    --bs-accordion-active-color: #333;
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+
+

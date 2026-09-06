@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LandingPageController{
 
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String fornecerLandingPage(){
         return "index.html";
     }
@@ -17,6 +17,11 @@ public class LandingPageController{
     @GetMapping("/solicitacao_cadastro/dados")
     public String fornecerPaginaDeSolicitacaoDeCadastroDeEmpresa(){
         return "solicitacao_cadastro.html";
+    }
+
+    @GetMapping("/solicitacao_cadastro/modulos")
+    public String fornecerPaginaDeSelecaoDeModulos(){
+        return "selecao_de_modulos.html";
     }
 
 }

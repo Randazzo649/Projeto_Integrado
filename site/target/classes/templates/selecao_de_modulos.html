@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UnitHub</title>
+        <link rel="stylesheet" th:href="@{/css/selecao_de_modulos.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    </head>
+    
+    <body>
+            <div id="superior" class="d-flex justify-content-between align-items-center px-5 py-3">
+                <div> <img th:src="@{/imgs/logo_full.png}" alt="" id="logo"> </div>
+                <div id="usuario_infos"> <button id="usuario_foto"><img src="" alt=""></button> <span>nome</span> </div>
+            </div>
+            <main>
+                <div>
+                    <h1>CADASTRO</h1>
+                    <h3 class="ms-3">SELECIONE SEUS MÓDULOS</h3>
+                </div>
+
+                <main>
+    
+                    <div id="1" class="modulo nao_selecionado">
+                        <img th:src="@{/imgs/receber.png}" alt="a">
+                        <div>
+                            <h5>FINANCEIRO</h5>
+                            <h6>Controle todas as entradas, saídas e movimentações de dinheiro de sua empresa</h6>
+                        </div>
+                    </div>
+                    <div id="2" class="modulo nao_selecionado">
+                        <img th:src="@{/imgs/RH.png}" alt="a">
+                        <div>
+                            <h5>RECURSOS HUMANOS</h5>
+                            <h6>Gerencie com facilidade funcionários, cargos, férias, folhas de pagamento e benefícios</h6>
+                        </div>
+                    </div>
+                    <div id="3" class="modulo nao_selecionado">
+                        <img th:src="@{/imgs/carrinho.png}" alt="a">
+                        <div>
+                            <h5>COMERCIAL</h5>
+                            <h6>Administre seus clientes e gerencie suas vendas, cotações e contratos</h6>
+                        </div>
+                    </div>
+                    <div id="4" class="modulo nao_selecionado">
+                        <img th:src="@{/imgs/estoque.png}" alt="a">
+                        <div>
+                            <h5>ESTOQUE</h5>
+                            <h6>Cadastre itens, categorize seu inventário e acompanhe a movimentação dos produtos</h6>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <input id="salvar" type="button" value="SALVAR">
+                    </div>
+
+                </main>
+
+            </main>
+    </body>
+
+    <script th:src="@{/js/config.js}"></script>
+    <script th:src="@{/js/selecao_de_modulos.js}"></script>
+</html>
