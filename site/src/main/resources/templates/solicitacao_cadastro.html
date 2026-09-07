@@ -18,6 +18,7 @@
                     <h1>CADASTRO</h1>
                     <h3 class="ms-3">EMPRESA</h3>
                 </div>
+                <!-- FORMULARIO DE ENVIO -->
                 <div id="form" class="d-flex flex-column w-100 gap-3">
                     <div class="d-flex w-100 gap-3"> 
                         <div class="w-75"><label for="razao">razão social</label><br><input type="text" id="razao" class="form_txt_in"></div> 
@@ -44,8 +45,33 @@
                         <input type="button" id="salvar_btn" value="SALVAR">
                     </div>
                 </div>
+
+                <!-- MODAL DE CONFIRMAÇÃO DE ENVIO -->
+                <div class="modal fade" id="meuModal" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="tituloModal"></h3>
+
+                                <button type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal">
+                                </button>
+                            </div>
+
+                            <div id="conteudoModal" class="modal-body d-flex gap-4">
+                                
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
             </main>
     </body>
     <script th:src="@{/js/config.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
     <script th:src="@{/js/solicitacao_cadastro.js}"></script>
 </html>

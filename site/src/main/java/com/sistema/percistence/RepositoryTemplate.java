@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import com.sistema.percistence.configs.DataBaseConfig;
 
 
 public abstract class RepositoryTemplate<T> {

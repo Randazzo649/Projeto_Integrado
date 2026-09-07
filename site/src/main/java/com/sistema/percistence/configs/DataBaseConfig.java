@@ -1,4 +1,4 @@
-package com.sistema.percistence;
+package com.sistema.percistence.configs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ public class DataBaseConfig{
 
     private static DataBaseConfig conf;
 
-    private static String caminho = "jdbd:mysql://127.0.0.1/UnitHub";
+    private static String caminho = "jdbc:mysql://127.0.0.1/UnitHub";
     private static String senha = "";
     private static String usuario = "root";
 

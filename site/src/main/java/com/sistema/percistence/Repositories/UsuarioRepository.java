@@ -26,7 +26,7 @@ public class UsuarioRepository extends RepositoryTemplate<Usuario> {
 
 	@Override
 	protected String getSelectAllString(String filtro) {
-		return "SELECT * FROM Usuario";
+		return "SELECT * FROM Usuario " + filtro;
 	}
 
 	@Override

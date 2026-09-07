@@ -11,9 +11,6 @@ main{
     padding: 50px 80px 0px 80px; 
 }
 
-#form{
-    
-}
 .form_txt_in{
     width: 100%;
     height: 36px;
@@ -21,6 +18,9 @@ main{
     border: 1px solid black;
     padding: 10px 10px;
     outline: none;
+}
+.form_txt_in:invalid{
+    border: 1px solid red;
 }
 #file_in_btn{
     height: 120px;
@@ -31,6 +31,14 @@ main{
     justify-content: center;
     align-items: center;
     transition: 0.3s ease;
+}
+.nao_vazio{
+    background-color: rgb(145, 250, 145);
+    border: 1px solid rgb(128, 248, 128);
+}
+.vazio{
+    background-color: rgb(255, 126, 126);
+    border: 1px solid rgb(255, 107, 107);;
 }
 #file_in_btn img{
     width: 70px;

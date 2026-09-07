@@ -26,7 +26,7 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
 
     @Override
     protected String getSelectAllString(String filtro) {
-        return "SELECT * FROM Empresa;";
+        return "SELECT * FROM Empresa " + filtro;
     }
 
     @Override

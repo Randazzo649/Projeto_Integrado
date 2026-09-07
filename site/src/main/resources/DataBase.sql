@@ -36,14 +36,15 @@ CREATE TABLE IF NOT EXISTS Empresa_has_Usuario(
 
 
 CREATE TABLE IF NOT EXISTS Solicitacao(
-    id int primary key auto_increment,
-    data_solic datetime not null,
-    data_aprov datetime not null,
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data_decis DATETIME,
+    data_solic DATETIME NOT NULL,
     razao VARCHAR(45) NOT NULL,
     cnpj VARCHAR(18) NOT NULL UNIQUE,
     telefone VARCHAR(19) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
     senha VARCHAR(45) NOT NULL,
-    nome VARCHAR(45) NOT NULL
+    nome VARCHAR(45) NOT NULL,
+    documento VARCHAR(100) NOT NULL
 );
