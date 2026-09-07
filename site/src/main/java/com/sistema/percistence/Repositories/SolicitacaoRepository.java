@@ -70,6 +70,7 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
         e.setDataDecisao(rs.getString("data_decis"));
         e.setDataSolicitacao(rs.getString("data_solic"));
         e.setDocumento(rs.getString("documento"));
+        e.setRazaoSocial(rs.getString("razao"));
         return e;
     }
 

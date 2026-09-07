@@ -12,7 +12,7 @@
     <body>
             <div id="superior" class="d-flex justify-content-between align-items-center px-5 py-3">
                 <div> <img th:src="@{/imgs/logo_full.png}" alt="" id="logo"> </div>
-                <div id="usuario_infos"> <button id="usuario_foto"><img src="" alt=""></button> <span>nome</span> </div>
+                <div id="usuario_infos"> <button id="usuario_foto"><img src="" alt=""></button> <span th:text="${u.nome}">nome</span> </div>
             </div>
 
             <main>
@@ -24,24 +24,24 @@
                     
 
                     <!-- accordions -->
-                    <div class="accordion-item ms-3 mb-5">
+                    <div th:each="s : ${solicitacoes}" class="accordion-item ms-3 mb-5">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDois" aria-controls="collapseDois">
-                                <div><h3>NOME DA EMPRESA</h3> <p>data</p></div>
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:data-bs-target="'#collapse' + ${s.id}" th:aria-controls="'collapse' + ${s.id}">
+                                <div><h3 th:text="${s.nome}"> NOME DA EMPRESA</h3> <p th:text="${s.dataSolicitacao}">data</p></div>
                             </button>
                         </h2>
-                        <div id="collapseDois" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div th:id="'collapse' + ${s.id}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="info d-flex flex-row gap-3">
                                     <div class="empresa_infos w-50" >
-                                        <div> <h3>Razão social:</h3> <span>TEXTO</span> </div>
-                                        <div> <h3>Nome:</h3>  <span>TEXTO</span></div>
-                                        <div> <h3>Email:</h3>  <span>TEXTO</span></div>
-                                        <div> <h3>Endereço:</h3>  <span>TEXTO</span></div>
+                                        <div> <h3>Razão social:</h3> <span th:text="${s.razaoSocial}">TEXTO</span> </div>
+                                        <div> <h3>Nome:</h3>  <span th:text="${s.nome}">TEXTO</span></div>
+                                        <div> <h3>Email:</h3>  <span th:text="${s.email}">TEXTO</span></div>
+                                        <div> <h3>Endereço:</h3>  <span th:text="${s.endereco}">TEXTO</span></div>
                                     </div>
                                     <div class="empresa_infos w-50">
-                                        <div> <h3>CNPJ:</h3>  <span>TEXTO</span></div>
-                                        <div> <h3>Telefone:</h3>  <span>TEXTO</span></div>
+                                        <div> <h3>CNPJ:</h3>  <span th:text="${s.cnpj}">TEXTO</span></div>
+                                        <div> <h3>Telefone:</h3>  <span th:text="${s.telefone}">TEXTO</span></div>
                                     </div>
                                 </div><br>
                                 <div class="inputs d-flex justify-content-end gap-3">

@@ -10,7 +10,7 @@ public class FilePersistenceConfig {
     private String outDocumentosSolicitacao = out + "/documentosSolicitacao";
     //validação de arquivos
     private String[] extencoesPermitidas = {
-        "pdf", "png", "jpeg", "jpg", ""
+        "pdf", "png", "jpeg", "jpg"
     };
 
 

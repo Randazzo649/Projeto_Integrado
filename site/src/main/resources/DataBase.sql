@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Usuario(
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
-    senha VARCHAR(45) NOT NULL,
+    senha VARCHAR(100) NOT NULL,
     foto VARCHAR(100) NULL,
     curador BOOLEAN
 );
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Empresa(
     telefone VARCHAR(19) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
-    senha VARCHAR(45) NOT NULL,
+    senha VARCHAR(100) NOT NULL,
     foto VARCHAR(100) NULL,
     cor VARCHAR(16) NULL,
     nome VARCHAR(45) NOT NULL
@@ -44,7 +44,9 @@ CREATE TABLE IF NOT EXISTS Solicitacao(
     telefone VARCHAR(19) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     email VARCHAR(45) NOT NULL UNIQUE,
-    senha VARCHAR(45) NOT NULL,
+    senha VARCHAR(100) NOT NULL,
     nome VARCHAR(45) NOT NULL,
     documento VARCHAR(100) NOT NULL
 );
+
+INSERT INTO Usuario(nome, email, senha, curador) VALUES ('admin', 'admin@gmail.com', "$argon2id$v=19$m=8192,t=2,p=1$pqgiLpo6XpIZXratcbjq8A$nQfl7qlD0qSiEHl6TPrmKv282L/XblC/8PIp7Z79hAw", 1)

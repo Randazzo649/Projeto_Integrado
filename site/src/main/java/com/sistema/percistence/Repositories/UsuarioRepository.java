@@ -1,5 +1,6 @@
 package com.sistema.percistence.Repositories;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,19 @@ import com.sistema.models.Usuario;
 import com.sistema.percistence.RepositoryTemplate;
 
 public class UsuarioRepository extends RepositoryTemplate<Usuario> {
+
+	public Usuario findByEmail(String email) throws SQLException{
+		Usuario usuario = null;
+		try( Connection conn = bd.conectarSql() ){
+			String sql = "SELECT * FROM Usuario WHERE email = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, email);
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next())
+				usuario = this.getClassFromResultSet(rs);
+		}
+		return  usuario;
+	}
 
 	@Override
 	protected String getInsertionString() {

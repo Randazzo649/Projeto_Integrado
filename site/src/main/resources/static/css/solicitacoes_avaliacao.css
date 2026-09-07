@@ -54,5 +54,7 @@ main{
     --bs-accordion-active-color: #333;
     --bs-accordion-btn-focus-box-shadow: none;
 }
-
+span{
+    font-size: 26px;
+}
 
