@@ -15,37 +15,37 @@ public class Solicitacao {
 
     
     public String getDocumento() {
-        return documento;
+        return this.documento;
     }
     public String getCnpj() {
-        return cnpj;
+        return this.cnpj;
     }
     public String getDataDecisao() {
-        return dataDecisao;
+        return this.dataDecisao;
     }
     public String getDataSolicitacao() {
-        return dataSolicitacao;
+        return this.dataSolicitacao;
     }
     public String getEmail() {
-        return email;
+        return this.email;
     }
     public String getEndereco() {
-        return endereco;
+        return this.endereco;
     }
     public long getId() {
-        return id;
+        return this.id;
     }
     public String getNome() {
-        return nome;
+        return this.nome;
     }
     public String getRazaoSocial() {
-        return razaoSocial;
+        return this.razaoSocial;
     }
     public String getSenha() {
-        return senha;
+        return this.senha;
     }
     public String getTelefone() {
-        return telefone;
+        return this.telefone;
     }
 
     public void setCnpj(String cnpj) {

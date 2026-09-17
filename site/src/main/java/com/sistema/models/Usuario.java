@@ -20,13 +20,13 @@ public class Usuario {
         return this.senha;
     }
     public String getNome() {
-        return nome;
+       return this.nome;
     }
     public String getFoto() {
-        return foto;
+       return this.foto;
     }
     public boolean isCurador() {
-        return curador;
+       return this.curador;
     }
     
     public void setId(long id){
