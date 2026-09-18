@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS Solicitacao(
     email VARCHAR(45) NOT NULL UNIQUE,
     senha VARCHAR(100) NOT NULL,
     nome VARCHAR(45) NOT NULL,
-    documento VARCHAR(100) NOT NULL
+    documento VARCHAR(250) NOT NULL
 );
 
 INSERT INTO Usuario(nome, email, senha, curador) VALUES ('admin', 'admin@gmail.com', "$argon2id$v=19$m=8192,t=2,p=1$pqgiLpo6XpIZXratcbjq8A$nQfl7qlD0qSiEHl6TPrmKv282L/XblC/8PIp7Z79hAw", 1);
