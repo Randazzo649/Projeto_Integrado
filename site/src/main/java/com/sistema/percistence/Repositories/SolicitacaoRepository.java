@@ -5,13 +5,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import com.sistema.models.Modulo;
 import com.sistema.models.Solicitacao;
 import com.sistema.percistence.RepositoryTemplate;
+import com.sistema.models.Modulo;
+import com.sistema.percistence.Repositories.ModuloRepository;
 
 public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
 
+    private static final ModuloRepository mr = new ModuloRepository();
     //metodos publicos
 
     public void registrarAprovacaoSolicitacao(Solicitacao s) throws SQLException{
@@ -27,11 +30,11 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
             stmt.setString(7, s.getEmail());
             stmt.setString(8, s.getSenha());
             
-            stmt.execute() ;
+            stmt.execute();
         } 
     }
 
-    public void adicionarMoculo(String[] modulos, long idSolicitacao) throws SQLException{
+    public void adicionarModulos(String[] modulos, long idSolicitacao) throws SQLException{
         try(Connection conn = RepositoryTemplate.bd.conectarSql()){
             
             String sql = "INSERT INTO Solicitacao_has_Modulo(id_solicitacao, id_modulo) VALUES (?, ?)"; 
@@ -111,6 +114,7 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
         e.setDataSolicitacao(rs.getString("data_solic"));
         e.setDocumento(rs.getString("documento"));
         e.setRazaoSocial(rs.getString("razao"));
+
         return e;
     }
 

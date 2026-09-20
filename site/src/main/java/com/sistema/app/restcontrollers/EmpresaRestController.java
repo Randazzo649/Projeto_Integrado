@@ -48,7 +48,7 @@ public class EmpresaRestController {
         s.setDocumento(caminhoArquivo);
         //salva a solicitação no banco de dados
         long id = sr.cadastrar(s);
-        sr.adicionarMoculo(modulosEscolhidos, id);
+        sr.adicionarModulos(modulosEscolhidos, id);
         return "1";
     }
 

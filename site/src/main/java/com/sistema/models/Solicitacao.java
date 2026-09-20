@@ -1,5 +1,7 @@
 package com.sistema.models;
 
+import com.sistema.models.Modulo;
+
 public class Solicitacao {
     private long id;
     private String nome;
@@ -12,6 +14,8 @@ public class Solicitacao {
     private String dataSolicitacao;
     private String dataDecisao;
     private String documento;
+
+    private Modulo[] modulos;
 
     
     public String getDocumento() {
@@ -47,6 +51,9 @@ public class Solicitacao {
     public String getTelefone() {
         return this.telefone;
     }
+    public Modulo[] getModulos() {
+        return modulos;
+    }
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
@@ -80,6 +87,9 @@ public class Solicitacao {
     }
     public void setDocumento(String documento) {
         this.documento = documento;
+    }
+    public void setModulos(Modulo[] modulos) {
+        this.modulos = modulos;
     }
 }
 

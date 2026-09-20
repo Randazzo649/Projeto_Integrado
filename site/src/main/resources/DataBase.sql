@@ -192,6 +192,7 @@ BEGIN
     
     UPDATE Solicitacao SET data_decis = NOW() WHERE id = id_solicitacao;
 
+    INSERT INTO empresa_has_modulo(id_empresa, id_modulo) SELECT empresa_id, id_modulo FROM solicitacao_has_modulo AS s WHERE s.id_solicitacao = id_solicitacao;
 END $$
 DELIMITER ;
 
