@@ -15,13 +15,17 @@ public abstract class RepositoryTemplate<T> {
         
     }
 
-    public final boolean cadastrar(T entity) throws SQLException {
+    public final long cadastrar(T entity) throws SQLException {
         String sql = getInsertionString();
         try (Connection conn = bd.conectarSql();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             inserirInsertionParametros(stmt, entity);
-            int linhasAfetadas = stmt.executeUpdate();
-            return linhasAfetadas > 0;
+            stmt.executeUpdate();
+            ResultSet rs = stmt.getGeneratedKeys();
+            long id = -1;
+            if(rs.next())
+                id = rs.getLong(1);
+            return id;
         }
     }
 
@@ -35,11 +39,11 @@ public abstract class RepositoryTemplate<T> {
         }
     }
 
-    public final T findById(int id) throws SQLException {
+    public final T findById(long id) throws SQLException {
         String sql = getSelectByIdString();
         try (Connection conn = bd.conectarSql();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return getClassFromResultSet(rs);

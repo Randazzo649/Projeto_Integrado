@@ -31,7 +31,7 @@ public class CuradoriaController {
     @GetMapping("/solicitacoes")
     public String fornecerPaginaDeAvaliacaoDeSolicitacoes(HttpSession sessao, Model m) throws SQLException{
         Usuario usuario = (Usuario) sessao.getAttribute("usuario");
-        ArrayList<Solicitacao> solicitacoes = solicitacaoRepository.findAll("");
+        ArrayList<Solicitacao> solicitacoes = solicitacaoRepository.findAll("WHERE data_decis IS NULL");
 
         m.addAttribute("u", usuario);
         m.addAttribute("solicitacoes", solicitacoes);

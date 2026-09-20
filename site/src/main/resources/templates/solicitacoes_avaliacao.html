@@ -24,7 +24,7 @@
                     
 
                     <!-- accordions -->
-                    <div th:each="s : ${solicitacoes}" class="accordion-item ms-3 mb-5">
+                    <div th:each="s : ${solicitacoes}" class="accordion-item ms-3 mb-5" th:id=" 'solic_' + ${s.id}">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:data-bs-target="'#collapse' + ${s.id}" th:aria-controls="'collapse' + ${s.id}">
                                 <div><h3 th:text="${s.nome}"> NOME DA EMPRESA</h3> <p th:text="${s.dataSolicitacao}">data</p></div>
@@ -45,8 +45,8 @@
                                     </div>
                                 </div><br>
                                 <div class="inputs d-flex justify-content-end gap-3">
-                                    <input type="button" class="rejeitar_btn" value="REJEITAR">
-                                    <input type="button" class="aprovar_btn" value="APROVAR">
+                                    <input type="button" th:onclick="'rejeitar(' + ${s.id} + ')'" class="rejeitar_btn" value="REJEITAR">
+                                    <input type="button" th:onclick="'aprovar(' + ${s.id} + ')'" class="aprovar_btn" value="APROVAR">
                                 </div>
                             </div>
                         </div>
@@ -57,6 +57,7 @@
             </main>
     </body>
 
+    <script th:src="@{/js/config.js}"></script>
     <script th:src="@{/js/solicitacoes_avaliacao.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </html>

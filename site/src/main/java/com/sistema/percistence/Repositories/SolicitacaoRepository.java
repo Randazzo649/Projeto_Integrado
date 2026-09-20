@@ -1,13 +1,53 @@
 package com.sistema.percistence.Repositories;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sistema.models.Modulo;
 import com.sistema.models.Solicitacao;
 import com.sistema.percistence.RepositoryTemplate;
 
 public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
+
+    //metodos publicos
+
+    public void registrarAprovacaoSolicitacao(Solicitacao s) throws SQLException{
+        String sql = "CALL cadastrar_empresa(?, ?, ?, ?, ?, ?, ?, ?);";
+        try(Connection conn = RepositoryTemplate.bd.conectarSql();
+            CallableStatement stmt = conn.prepareCall(sql);){
+            stmt.setLong(1, s.getId());
+            stmt.setString(2, s.getRazaoSocial());
+            stmt.setString(3, s.getCnpj());
+            stmt.setString(4, s.getNome());
+            stmt.setString(5, s.getTelefone());
+            stmt.setString(6, s.getEndereco());
+            stmt.setString(7, s.getEmail());
+            stmt.setString(8, s.getSenha());
+            
+            stmt.execute() ;
+        } 
+    }
+
+    public void adicionarMoculo(String[] modulos, long idSolicitacao) throws SQLException{
+        try(Connection conn = RepositoryTemplate.bd.conectarSql()){
+            
+            String sql = "INSERT INTO Solicitacao_has_Modulo(id_solicitacao, id_modulo) VALUES (?, ?)"; 
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setLong(1, idSolicitacao);
+            
+            for(String m_id : modulos){
+                stmt.setLong(2, Long.parseLong(m_id));
+                stmt.executeUpdate();
+            }
+            
+            stmt.close();
+        }
+    }
+
+    //metodos de RepositoryTemplate implementados:
 
     @Override
     protected String getInsertionString() {
@@ -16,7 +56,7 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
 
     @Override
     protected String getUpdateString() {
-        return "UPDATE TABLE Solicitacao SET data_decis = ?,  data_solic = ?,  razao = ?,  cnpj = ?,  telefone = ?,  endereco = ?,  email = ?,  senha = ?,  nome = ?, documento = ? WHERE id = ?";
+        return "UPDATE Solicitacao SET data_decis = ?,  data_solic = ?,  razao = ?,  cnpj = ?,  telefone = ?,  endereco = ?,  email = ?,  senha = ?,  nome = ?, documento = ? WHERE id = ?";
     }
 
     @Override
@@ -94,6 +134,4 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
         return json.toString();
     }
 
-    
-    
 }

@@ -1,6 +1,12 @@
 const modulos_btns = Array.from(document.getElementsByClassName("modulo"));
+const salvar_btn = document.getElementById("salvar");
+const tituloModal = document.getElementById("tituloModal");
+const conteudoModal = document.getElementById("conteudoModal");
+const modal = new bootstrap.Modal(document.getElementById("meuModal"));
 
-
+salvar_btn.onclick = () => {
+    // A DEFINIR
+}
 
 //configura o comportamento das seleções
 modulos_btns.forEach(e => {

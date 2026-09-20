@@ -6,8 +6,6 @@ public class Empresa {
     private String cnpj;
     private String telefone;
     private String endereco;
-    private String email;
-    private String senha;
     private String foto;
     private String cor;
     private String nome;
@@ -41,18 +39,6 @@ public class Empresa {
     }
     public String getEndereco() {
         return endereco;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    public String getSenha() {
-        return senha;
     }
     public void setFoto(String foto) {
         this.foto = foto;

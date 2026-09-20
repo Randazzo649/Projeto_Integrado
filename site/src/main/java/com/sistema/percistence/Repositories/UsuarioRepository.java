@@ -30,7 +30,7 @@ public class UsuarioRepository extends RepositoryTemplate<Usuario> {
 
 	@Override
 	protected String getUpdateString() {
-		return "UPDATE TABLE Usuario SET nome = ?, email = ?, senha = ?, foto = ?, curador = ? WHERE id = ?";
+		return "UPDATE Usuario SET nome = ?, email = ?, senha = ?, foto = ?, curador = ? WHERE id = ?";
 	}
 
 	@Override
