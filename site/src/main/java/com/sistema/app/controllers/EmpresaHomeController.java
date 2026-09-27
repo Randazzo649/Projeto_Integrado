@@ -46,5 +46,14 @@ public class EmpresaHomeController {
         return "navegacao_modulos.html";
     }
 
+    @GetMapping("/personalizacao")
+    public String fornecerPaginaDePersonalizacaoDeEmpresa(HttpSession sessao, Model m) throws SQLException {
+        Usuario u = (Usuario) sessao.getAttribute("usuario");
+        Empresa e = (Empresa) empresaRepository.findById(u.getIdEmpresa());
+        m.addAttribute("u", u);
+        m.addAttribute("e", e);
+        return "personalizacao_empresa.html";
+    }
+
 }
 

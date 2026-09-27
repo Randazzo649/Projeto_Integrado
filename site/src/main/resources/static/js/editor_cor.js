@@ -5,10 +5,52 @@ const seletorMatriz = document.getElementById("seletor_matriz");
 const hex = document.getElementById("hex");
 const rgb = document.getElementById("rgb");
 const hsl = document.getElementById("hsl");
-let hue = 356;
-let saturation = 1;
-let value = 1;
+const header =document.getElementById("superior");
+const corInicial = rgbParaHue(header.style.backgroundColor);
+let hue = corInicial.h;
+let saturation = corInicial.s;
+let value = corInicial.v;
+// variaveis para upload de arquivo
+const file_in = document.getElementById("file_in");
+const file_btn = document.getElementById("alterar_logo_btn");
+const salvar_btn = document.getElementById("salvar_btn");
+//variaveis controle foto
+const logo_img = document.getElementById("logo");
 
+
+//comunicação com o back-end
+salvar_btn.onclick = () => {
+
+    const foto = file_in.files[file_in.files.length - 1];
+    const cor = "rgb(" + rgb.value + ")";
+
+    const dados = new FormData();
+    dados.append("cor", cor);
+    dados.append("foto", foto);
+
+    fetch(URL_SITE + "/empresa/salvar_alteracoes", {
+        method : "POST",
+        body : dados
+    }).then(r => {return r.text()}).then(r => {
+
+    })
+}
+
+//configuração do upload de arquivos
+file_btn.onclick = () => {
+    file_in.click();
+}
+file_in.onchange = () => {
+    file_btn.style.backgroundColor = "rgb(145, 250, 145)";
+    file_btn.style.border = " 1px solid rgb(128, 248, 128)";
+
+    if (file_in.files.length === 0) return;
+
+    const url_nova_foto = URL.createObjectURL(file_in.files[file_in.files.length - 1]);
+    logo_img.src = url_nova_foto;
+}
+
+//configuração da area de cor
 areaCor.addEventListener(
     "mousedown",
     function (event){
@@ -100,6 +142,7 @@ function atualizarCor(){
     rgb.value = `${r}, ${g}, ${b}`;
     const hslCor = rgbParaHsl(r, g, b);
     hsl.value = `${Math.round(hslCor.h)}°, ` + `${Math.round(hslCor.s)}%, ` + `${Math.round(hslCor.l)}%`;
+    header.style.backgroundColor = "rgb("+r+","+g+","+b+")";
 }
 
 function hsvParaRgb(h, s, v){
@@ -185,6 +228,58 @@ function rgbParaHsl(r, g, b){
         h: h * 360,
         s: s * 100,
         l: l * 100
+    };
+}
+
+// rgbString = rgb(n,n,n)
+function rgbParaHue(rgbString){
+    
+    rgbString = rgbString.replace("rgb(", "");
+    rgbString = rgbString.replace(")", "");
+
+    const rgb = rgbString.split(",");
+
+    let r = parseInt(rgb[0]) / 255;
+    let g = parseInt(rgb[1]) / 255;
+    let b = parseInt(rgb[2]) / 255;
+
+    const maior = Math.max(r, g, b);
+    const menor = Math.min(r, g, b);
+    const diferenca = maior - menor;
+
+    let h = 0;
+    let s = 0;
+    let v = maior;
+
+    if(maior !== 0)
+        s = diferenca / maior;
+
+    if(diferenca !== 0){
+
+        switch(maior){
+            case r:
+                h = ((g - b) / diferenca) % 6;
+                break;
+
+            case g:
+                h = ((b - r) / diferenca) + 2;
+                break;
+
+            case b:
+                h = ((r - g) / diferenca) + 4;
+                break;
+        }
+
+        h *= 60;
+
+        if(h < 0)
+            h += 360;
+    }
+
+    return {
+        h: h,
+        s: s,
+        v: v
     };
 }
 

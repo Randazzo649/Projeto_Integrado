@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sistema.models.Empresa;
 import com.sistema.models.Usuario;
-import com.sistema.percistence.Repositories.EmpresaRepository;
 import com.sistema.percistence.Repositories.UsuarioRepository;
 import com.sistema.security.HashConfigSingleton;
 

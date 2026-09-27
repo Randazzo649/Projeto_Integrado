@@ -10,20 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.sistema.models.Solicitacao;
-import com.sistema.percistence.configs.FilePersistenceConfig;
-import com.sistema.security.HashConfigSingleton;
-
 import jakarta.servlet.http.HttpSession;
 
+import com.sistema.models.Solicitacao;
+import com.sistema.percistence.configs.FilePersistenceConfigSingleton;
+import com.sistema.security.HashConfigSingleton;
+import com.sistema.models.Empresa;
 import com.sistema.percistence.Repositories.SolicitacaoRepository;
 import com.sistema.external.EmailSender;
+import com.sistema.percistence.Repositories.EmpresaRepository;;
 
 @RestController
 @RequestMapping("/empresa")
 public class EmpresaRestController {
 
     SolicitacaoRepository sr = new SolicitacaoRepository();
+    EmpresaRepository er = new EmpresaRepository();
     @Autowired EmailSender emailSender;
     
     @PostMapping("/solicitacao")
@@ -31,10 +33,10 @@ public class EmpresaRestController {
         //declara as variaveis necessárias para a operação
         String[] modulosEscolhidos = modulos.split(","); 
         Solicitacao s = new Solicitacao();
-        String out = FilePersistenceConfig.getInstance().getOutDocumentosSolicitacao();
-        String caminhoArquivo = out + "/" + multiFile.getOriginalFilename();
+        String outAbsoluto = FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoAbsoluto();
+        String caminhoArquivoAbsoluto = outAbsoluto + "/" + multiFile.getOriginalFilename();
         //valida as informacoes que necessitam de validação
-        if(!FilePersistenceConfig.getInstance().isValido(caminhoArquivo))
+        if(!FilePersistenceConfigSingleton.getInstance().isValido(caminhoArquivoAbsoluto))
             return "0";
         //define os dados iniciais
         s.setRazaoSocial(razao);
@@ -45,8 +47,8 @@ public class EmpresaRestController {
         s.setSenha(HashConfigSingleton.getInstance().hash(senha));
         s.setNome(nome);
         //define o local do documento
-        multiFile.transferTo(new File(caminhoArquivo));
-        s.setDocumento(caminhoArquivo);
+        multiFile.transferTo(new File(caminhoArquivoAbsoluto));
+        s.setDocumento(FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoRelativo());
         //salva a solicitação no banco de dados
         long id = sr.cadastrar(s);
         sr.adicionarModulos(modulosEscolhidos, id);
@@ -60,6 +62,29 @@ public class EmpresaRestController {
         String assunto = "Solicitação aprovada !!!";
         String msg = "Olá " + solicitacao.getEmail() + ", a UnitHub fica feliz em informar que sua solicitação foi aprovada !";
         emailSender.enviarEmail(solicitacao.getEmail(), assunto, msg);
+        return "1";
+    }
+
+    @PostMapping("salvar_alteracoes")
+    public String salvarAlteracoes(HttpSession sessao, @RequestParam(value="cor", required = false) String cor, @RequestParam(value="foto", required = false) MultipartFile logo) throws SQLException, IOException{
+  
+        FilePersistenceConfigSingleton fpc = FilePersistenceConfigSingleton.getInstance();
+        
+        Empresa empresa = (Empresa) sessao.getAttribute("empresa");
+        if(cor != null)
+            empresa.setCor(cor);
+        
+        if(logo != null && !logo.isEmpty()){
+            String nomeArquivo = logo.getOriginalFilename();
+            String caminhoAbsoluto = fpc.getOutLogosEmpresasAbsoluto() + "/" + nomeArquivo;
+            String caminhoRelativo = fpc.getOutLogosEmpresasRelativo() + "/" + nomeArquivo;
+            if(!fpc.isValido(caminhoAbsoluto))
+                return "0";
+            logo.transferTo(new File(caminhoAbsoluto));
+            empresa.setFoto(caminhoRelativo);
+        }
+
+        er.salvarEstadoAtual(empresa);
         return "1";
     }
 }

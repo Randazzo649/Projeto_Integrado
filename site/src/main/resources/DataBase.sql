@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Empresa(
     telefone VARCHAR(19) NOT NULL,
     endereco VARCHAR(100) NOT NULL,
     foto VARCHAR(100) NULL,
-    cor VARCHAR(16) NULL,
+    cor VARCHAR(20) NULL,
     nome VARCHAR(45) NOT NULL
 );
 
