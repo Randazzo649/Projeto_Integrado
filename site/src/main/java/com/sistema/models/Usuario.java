@@ -8,7 +8,9 @@ public class Usuario {
     private String senha;
     private String foto;
     private boolean curador;
-    
+    private String funcao;
+    private long idEmpresa;
+    private boolean ativo;
     
     public long getId(){
         return this.id;
@@ -28,6 +30,15 @@ public class Usuario {
     public boolean isCurador() {
        return this.curador;
     }
+    public boolean isAtivo() {
+        return ativo;
+    }
+    public String getFuncao() {
+        return funcao;
+    }
+    public long getIdEmpresa() {
+        return idEmpresa;
+    }
     
     public void setId(long id){
         this.id = id;
@@ -46,5 +57,14 @@ public class Usuario {
     }
     public void setCurador(boolean curador) {
         this.curador = curador;
+    }
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+    public void setIdEmpresa(long idEmpresa) {
+        this.idEmpresa = idEmpresa;
     }
 }

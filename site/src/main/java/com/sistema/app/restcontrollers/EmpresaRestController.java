@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.sistema.models.Solicitacao;
 import com.sistema.percistence.configs.FilePersistenceConfig;
-import com.sistema.percistence.configs.SecurityConfig;
+import com.sistema.security.HashConfigSingleton;
+
 import jakarta.servlet.http.HttpSession;
 
 import com.sistema.percistence.Repositories.SolicitacaoRepository;
-import com.sistema.util.EmailSender;
+import com.sistema.external.EmailSender;
 
 @RestController
 @RequestMapping("/empresa")
@@ -41,7 +42,7 @@ public class EmpresaRestController {
         s.setTelefone(telefone);
         s.setEndereco(endereco);
         s.setEmail(email);
-        s.setSenha(SecurityConfig.getInstance().hash(senha));
+        s.setSenha(HashConfigSingleton.getInstance().hash(senha));
         s.setNome(nome);
         //define o local do documento
         multiFile.transferTo(new File(caminhoArquivo));

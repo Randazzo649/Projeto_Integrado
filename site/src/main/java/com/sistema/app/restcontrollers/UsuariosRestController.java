@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sistema.models.Empresa;
 import com.sistema.models.Usuario;
+import com.sistema.percistence.Repositories.EmpresaRepository;
 import com.sistema.percistence.Repositories.UsuarioRepository;
-import com.sistema.percistence.configs.SecurityConfig;
+import com.sistema.security.HashConfigSingleton;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,7 +27,8 @@ public class UsuariosRestController {
         Usuario usuario = usuarioRepository.findByEmail(email);
         if(usuario == null)
             return "0";
-        boolean autenticado = SecurityConfig.getInstance().verificar(usuario.getSenha(), senhaInformada);
+        
+        boolean autenticado = HashConfigSingleton.getInstance().verificar(usuario.getSenha(), senhaInformada);
 
         if (!autenticado)
             return "0";

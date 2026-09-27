@@ -5,16 +5,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import com.sistema.models.Solicitacao;
 import com.sistema.percistence.RepositoryTemplate;
-import com.sistema.models.Modulo;
-import com.sistema.percistence.Repositories.ModuloRepository;
+
 
 public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
 
-    private static final ModuloRepository mr = new ModuloRepository();
     //metodos publicos
 
     public void registrarAprovacaoSolicitacao(Solicitacao s) throws SQLException{

@@ -1,11 +1,11 @@
-package com.sistema.percistence.configs;
+package com.sistema.security;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
-public class SecurityConfig {
-    
-    private static SecurityConfig conf;
+public class HashConfigSingleton {
+
+    private static HashConfigSingleton conf;
     private static final int SALT_LENGTH = 16;
     private static final int HASH_LENGTH = 32;
     private static final int MEMORIA = 8192;
@@ -13,11 +13,11 @@ public class SecurityConfig {
     private static final int ITERACOES = 2;
     private static final Argon2 argon = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, SALT_LENGTH, HASH_LENGTH);
 
-    private  SecurityConfig(){}
+    private  HashConfigSingleton(){}
 
-    public static SecurityConfig getInstance(){
+    public static HashConfigSingleton getInstance(){
         if(conf == null)
-            conf = new SecurityConfig();
+            conf = new HashConfigSingleton();
         return conf;
     }
 
@@ -28,5 +28,4 @@ public class SecurityConfig {
     public boolean verificar(String senhaBanco, String senhaInformada){
         return argon.verify(senhaBanco, senhaInformada.toCharArray());
     }
-
 }

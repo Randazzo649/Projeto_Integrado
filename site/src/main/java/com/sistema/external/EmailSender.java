@@ -1,4 +1,4 @@
-package com.sistema.util;
+package com.sistema.external;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;

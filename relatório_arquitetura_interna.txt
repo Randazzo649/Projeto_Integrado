@@ -1,0 +1,11 @@
+1- template de banco de dados 
+2- template de geração de relatórios
+3- 
+
+4- singleton de configuração de banco de dados 
+5- singleton de persistencia de arquivos 
+
+
+6- 
+7- 
+8- 
