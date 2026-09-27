@@ -1,2 +1,128 @@
 @import url("header_personalizacoes.css");
 
+main {
+    padding: 2% 6%;
+}
+
+.opcoes {
+    padding-left: 1.5%;
+}
+
+.funcionalidades {
+    padding-top: 1.5%;
+    padding-right: 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#alterar_logo_btn {
+    display: flex;
+    align-items: center;
+    border-color: black;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.alterar_logo h3 {
+    padding-left: 5%;
+}
+
+.alterar_logo button {
+    margin-top: 5%;
+}
+
+#alterar_logo_btn img {
+    width: 18%;
+    height: auto;
+    margin: 3% 10% 2% 30%;
+}
+
+.seletor_cor {
+    width: 48%;
+    min-width: 500px;
+}
+
+#area_cor {
+    --hue: 356;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background:
+        linear-gradient(to right,
+            white,
+            transparent),
+        linear-gradient(to top,
+            black,
+            transparent),
+        hsl(var(--hue),
+            100%,
+            50%);
+    cursor: crosshair;
+    border-radius: 6px;
+}
+
+#seletor_cor {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 2px #555;
+    transform:
+        translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+#barra_matriz {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    margin-top: 18px;
+    border-radius: 10px;
+    background: linear-gradient(to right,red,yellow,lime,cyan,blue,magenta,red);
+    cursor: pointer;
+}
+
+#seletor_matriz {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 0;
+    background-color: white;
+    border: 2px solid #555;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px white;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.campos_cor {
+    display: flex;
+    gap: 14px;
+    margin-top: 24px;
+}
+
+.campos_cor>div {
+    flex: 1;
+}
+
+.campos_cor label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.campos_cor input {
+    width: 100%;
+    height: 42px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+}
