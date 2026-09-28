@@ -10,23 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpSession;
 
 import com.sistema.models.Solicitacao;
 import com.sistema.percistence.configs.FilePersistenceConfigSingleton;
 import com.sistema.security.HashConfigSingleton;
+import com.sistema.external.email.EmailSender;
 import com.sistema.models.Empresa;
 import com.sistema.percistence.Repositories.SolicitacaoRepository;
-import com.sistema.external.EmailSender;
-import com.sistema.percistence.Repositories.EmpresaRepository;;
+import com.sistema.percistence.Repositories.EmpresaRepository;
+import com.sistema.external.email.messageTemplates.EmailAprovacao;
 
 @RestController
 @RequestMapping("/empresa")
 public class EmpresaRestController {
 
-    SolicitacaoRepository sr = new SolicitacaoRepository();
-    EmpresaRepository er = new EmpresaRepository();
-    @Autowired EmailSender emailSender;
+    private SolicitacaoRepository sr = new SolicitacaoRepository();
+    private EmpresaRepository er = new EmpresaRepository();
+    @Autowired private EmailSender emailSender;
     
     @PostMapping("/solicitacao")
     public String cadastroDeSolicitacaoDeContaEmpresarial( @RequestParam("razao") String razao, @RequestParam("cnpj") String cnpj,  @RequestParam("telefone") String telefone, @RequestParam("endereco") String endereco,  @RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("nome") String nome, @RequestParam("file") MultipartFile multiFile, @RequestParam("modulos") String modulos) throws IOException, SQLException {
@@ -56,11 +59,11 @@ public class EmpresaRestController {
     }
 
     @PostMapping("/avaliacao")
-    public String avaliarSolicitacao( @RequestParam("id") long id, HttpSession sessao ) throws SQLException{
+    public String avaliarSolicitacao( @RequestParam("id") long id, HttpSession sessao ) throws SQLException, MessagingException{
         Solicitacao solicitacao = sr.findById(id);
         sr.registrarAprovacaoSolicitacao(solicitacao);
         String assunto = "Solicitação aprovada !!!";
-        String msg = "Olá " + solicitacao.getEmail() + ", a UnitHub fica feliz em informar que sua solicitação foi aprovada !";
+        String msg = new EmailAprovacao(solicitacao.getEmail(), solicitacao.getRazaoSocial()).gerarEmail();
         emailSender.enviarEmail(solicitacao.getEmail(), assunto, msg);
         return "1";
     }

@@ -1,0 +1,21 @@
+_____________________ TEMPLATE's________________________
+1- template de banco de dados 
+    -> com.sistema.persistence.RepositoryTemplate (implementações em repositories)
+
+2- template de geração de relatórios
+    ->
+
+3- template para envio de emails (rejeição, aprovação, convite, etc...) 
+    -> com.sistema.external.email.MessageTemplate (implementações em messageTemplates)
+_____________________ SINGLETON's________________________
+4- singleton de configuração de banco de dados 
+    -> com.sistema.persistence.configs.DataBaseConfig
+
+5- singleton de persistencia de arquivos 
+    -> com.sistema.persistence.configs.FilePersistenceConfig
+_____________________ X's________________________
+6- 
+
+7- 
+
+8- 
