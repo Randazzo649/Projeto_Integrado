@@ -76,8 +76,7 @@ public abstract class RepositoryTemplate<T> {
                 String itemJson = toJson(rs);
                 json.append(itemJson).append(", ");
             }
-        }
-
+        } 
         json.append("{} ]");
         return json.toString();
     }

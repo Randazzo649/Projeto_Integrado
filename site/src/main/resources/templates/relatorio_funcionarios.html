@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UnitHub</title>
+
+        <link rel="stylesheet" th:href="@{/css/relatorio_funcionarios.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    </head>
+
+    <body>
+
+        <header>
+            <div id="superior" th:style=" 'background-color: ' + ${e.getCor} + ';'" class="d-flex justify-content-between align-items-center px-5 py-3">
+                <div> <img th:src="@{${e.getFoto}}" alt="" id="logo"> </div>
+                <div id="usuario_infos"> <button id="usuario_foto"><img th:src="@{/imgs/foto.png}" alt=""></button> <span th:text="${u.nome}" >nome</span> </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="titulo_pagina">
+                <h1>DASHBOARD</h1>
+                <h3>RELATÓRIO: QUADRO DE FUNCIONÁRIOS MENSAL</h3>
+            </div>
+
+            <div id="acoes">
+                <button type="button" id="exportar_pdf">EXPORTAR EM PDF</button>
+                <button type="button" id="voltar">← VOLTAR</button>
+            </div>
+
+            <h2 id="titulo_secao">QUADRO DE FUNCIONÁRIOS</h2>
+
+            <div class="linha_cards">
+
+                <section class="card_relatorio" id="card_totais">
+                    <div class="titulo_card">
+                        <strong>TOTAL DE FUNCIONÁRIOS</strong>
+                        <strong>43</strong>
+                    </div>
+
+                    <div class="item_total">
+                        <span>FUNCIONÁRIOS ATIVOS</span>
+                        <span>39</span>
+                    </div>
+                    <div class="item_total">
+                        <span>EM LICENÇA</span>
+                        <span>2</span>
+                    </div>
+                    <div class="item_total">
+                        <span>INATIVOS</span>
+                        <span>1</span>
+                    </div>
+                    <div class="item_total">
+                        <span>ADMISSÕES</span>
+                        <span>4</span>
+                    </div>
+                    <div class="item_total">
+                        <span>DESLIGAMENTOS</span>
+                        <span>2</span>
+                    </div>
+                </section>
+
+                <section class="card_relatorio" id="card_departamentos">
+                    <strong class="titulo_card_simples">FUNCIONÁRIOS POR DEPARTAMENTO</strong>
+                    <div id="grafico_departamentos">
+
+                    </div>
+                </section>
+            </div>
+
+            <div class="linha_cards segunda_linha">
+
+                <section class="card_relatorio" id="card_situacao">
+                    <strong class="titulo_card_simples">SITUAÇÃO DE FUNCIONÁRIOS</strong>
+                    <div id="grafico_situacao">
+
+                    </div>
+                </section>
+
+                <section class="card_relatorio" id="card_calendario">
+                    <strong class="titulo_card_simples">ADMISSÕES E DESLIGAMENTOS</strong>
+                    <h4 id="mes_calendario"></h4>
+                    <div class="dias_semana">
+                        <span>Se</span>
+                        <span>Te</span>
+                        <span>Qu</span>
+                        <span>Qu</span>
+                        <span>Se</span>
+                        <span>Sá</span>
+                        <span>Do</span>
+                    </div>
+                    <div class="calendario" id="calendario">
+
+                        <!--
+                            Os dias do mês serão
+                            criados automaticamente
+                            pelo JavaScript.
+                        -->
+
+                    </div>
+                    <div class="legenda">
+                        <div>
+                            <span class="quadrado_legend bg-success"></span>
+                            <span>ADMISSÕES</span>
+                        </div>
+                        <div>
+                            <span class="quadrado_legend bg-danger"></span>
+                            <span>DESLIGAMENTOS</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="card_relatorio" id="card_tabela">
+                <div class="tabela">
+                    <div class="tabela_header">
+                        <strong>FUNCIONÁRIO</strong>
+                        <strong>CARGO</strong>
+                        <strong>DEPARTAMENTO</strong>
+                        <strong>ADMISSÃO</strong>
+                        <strong>SITUAÇÃO</strong>
+                    </div>
+                    <div id="tabela_scroll">
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 1</span>
+                            <span>NOME CARGO A</span>
+                            <span>NOME DEPARTAMENTO A</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 2</span>
+                            <span>NOME CARGO B</span>
+                            <span>NOME DEPARTAMENTO B</span>
+                            <span>00/00/0000</span>
+                            <span>LICENÇA MÉDICA</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 3</span>
+                            <span>NOME CARGO C</span>
+                            <span>NOME DEPARTAMENTO C</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 4</span>
+                            <span>NOME CARGO D</span>
+                            <span>NOME DEPARTAMENTO D</span>
+                            <span>00/00/0000</span>
+                            <span>INATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 5</span>
+                            <span>NOME CARGO A</span>
+                            <span>NOME DEPARTAMENTO A</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 6</span>
+                            <span>NOME CARGO B</span>
+                            <span>NOME DEPARTAMENTO B</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 7</span>
+                            <span>NOME CARGO C</span>
+                            <span>NOME DEPARTAMENTO C</span>
+                            <span>00/00/0000</span>
+                            <span>INATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 8</span>
+                            <span>NOME CARGO D</span>
+                            <span>NOME DEPARTAMENTO D</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 9</span>
+                            <span>NOME CARGO A</span>
+                            <span>NOME DEPARTAMENTO A</span>
+                            <span>00/00/0000</span>
+                            <span>LICENÇA MÉDICA</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 10</span>
+                            <span>NOME CARGO B</span>
+                            <span>NOME DEPARTAMENTO B</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 11</span>
+                            <span>NOME CARGO C</span>
+                            <span>NOME DEPARTAMENTO C</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 12</span>
+                            <span>NOME CARGO D</span>
+                            <span>NOME DEPARTAMENTO D</span>
+                            <span>00/00/0000</span>
+                            <span>INATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 13</span>
+                            <span>NOME CARGO A</span>
+                            <span>NOME DEPARTAMENTO A</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 14</span>
+                            <span>NOME CARGO B</span>
+                            <span>NOME DEPARTAMENTO B</span>
+                            <span>00/00/0000</span>
+                            <span>ATIVO</span>
+                        </div>
+                        <div class="tabela_linha">
+                            <span>NOME SOBRENOME 15</span>
+                            <span>NOME CARGO C</span>
+                            <span>NOME DEPARTAMENTO C</span>
+                            <span>00/00/0000</span>
+                            <span>LICENÇA MÉDICA</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <script th:src="@{/js/relatorio_funcionarios.js}"></script>
+
+    </body>
+</html>
