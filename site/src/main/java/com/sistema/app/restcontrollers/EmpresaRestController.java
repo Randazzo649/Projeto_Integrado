@@ -3,6 +3,8 @@ package com.sistema.app.restcontrollers;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,7 @@ import com.sistema.models.Empresa;
 import com.sistema.percistence.Repositories.SolicitacaoRepository;
 import com.sistema.percistence.Repositories.EmpresaRepository;
 import com.sistema.external.email.messageTemplates.EmailAprovacao;
+import com.sistema.external.email.messageTemplates.EmailReprovacao;
 
 @RestController
 @RequestMapping("/empresa")
@@ -58,12 +61,25 @@ public class EmpresaRestController {
         return "1";
     }
 
-    @PostMapping("/avaliacao")
-    public String avaliarSolicitacao( @RequestParam("id") long id, HttpSession sessao ) throws SQLException, MessagingException{
+    @PostMapping("/avaliacao_aprovacao")
+    public String aprovarSolicitacao( @RequestParam("id") long id, HttpSession sessao ) throws SQLException, MessagingException{
         Solicitacao solicitacao = sr.findById(id);
         sr.registrarAprovacaoSolicitacao(solicitacao);
         String assunto = "Solicitação aprovada !!!";
         String msg = new EmailAprovacao(solicitacao.getEmail(), solicitacao.getRazaoSocial()).gerarEmail();
+        emailSender.enviarEmail(solicitacao.getEmail(), assunto, msg);
+        return "1";
+    }
+
+    @PostMapping("/avaliacao_rejeicao")
+    public String rejeitarSolicitacao(@RequestParam("id") long id, HttpSession sessao) throws SQLException, MessagingException{
+        Solicitacao solicitacao = sr.findById(id);
+        solicitacao.setAprovada(false);
+        solicitacao.setDataDecisao(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        String assunto = "Sua solicitação foi rejeitada";
+        String msg = new EmailReprovacao(solicitacao.getEmail(), solicitacao.getRazaoSocial()).gerarEmail();
+        
+        sr.salvarEstadoAtual(solicitacao);
         emailSender.enviarEmail(solicitacao.getEmail(), assunto, msg);
         return "1";
     }

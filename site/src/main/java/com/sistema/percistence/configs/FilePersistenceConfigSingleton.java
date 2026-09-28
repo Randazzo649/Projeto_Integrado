@@ -1,7 +1,6 @@
 package com.sistema.percistence.configs;
 
 import java.io.File;
-import java.io.IOException;
 
 public class FilePersistenceConfigSingleton {
     

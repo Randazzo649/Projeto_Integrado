@@ -17,7 +17,7 @@ public class EmailReprovacao extends EmailTemplate {
     protected String gerarConteudo() {
         return """
             <div style="
-                padding: 40px 35px;
+                padding: 5px 3px;
                 text-align: center;
             ">
 

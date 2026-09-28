@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS Solicitacao(
     email VARCHAR(45) NOT NULL UNIQUE,
     senha VARCHAR(128) NOT NULL,
     nome VARCHAR(45) NOT NULL,
-    documento VARCHAR(250) NOT NULL
+    documento VARCHAR(250) NOT NULL,
+    aprovada BOOLEAN NULL
 );
 
 
@@ -184,7 +185,7 @@ BEGIN
 	INSERT INTO Usuario(email, senha, curador, id_empresa, funcao) VALUES (email_usuario, hash_senha, 0, empresa_id, "adm");
 	SET usuario_id = LAST_INSERT_ID();
     
-    UPDATE Solicitacao SET data_decis = NOW() WHERE id = id_solicitacao;
+    UPDATE Solicitacao SET data_decis = NOW(), aprovada = 1 WHERE id = id_solicitacao;
 
     INSERT INTO empresa_has_modulo(id_empresa, id_modulo) SELECT empresa_id, id_modulo FROM solicitacao_has_modulo AS s WHERE s.id_solicitacao = id_solicitacao;
 END $$

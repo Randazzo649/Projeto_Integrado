@@ -55,7 +55,7 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
 
     @Override
     protected String getUpdateString() {
-        return "UPDATE Solicitacao SET data_decis = ?,  data_solic = ?,  razao = ?,  cnpj = ?,  telefone = ?,  endereco = ?,  email = ?,  senha = ?,  nome = ?, documento = ? WHERE id = ?";
+        return "UPDATE Solicitacao SET data_decis = ?,  data_solic = ?,  razao = ?,  cnpj = ?,  telefone = ?,  endereco = ?,  email = ?,  senha = ?,  nome = ?, documento = ?, aprovada = ? WHERE id = ?";
     }
 
     @Override
@@ -93,7 +93,8 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
         stmt.setString(8, entity.getSenha());
         stmt.setString(9,entity.getNome());
         stmt.setString(10, entity.getDocumento());
-        stmt.setLong(11,entity.getId());
+        stmt.setBoolean(11, entity.isAprovada());
+        stmt.setLong(12,entity.getId());
     }
 
     @Override
@@ -110,7 +111,7 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
         e.setDataSolicitacao(rs.getString("data_solic"));
         e.setDocumento(rs.getString("documento"));
         e.setRazaoSocial(rs.getString("razao"));
-
+        e.setAprovada(rs.getBoolean("aprovada"));
         return e;
     }
 
@@ -127,6 +128,7 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
         json.append("\"senha\" : ").append(rs.getString("senha")).append(", ");
         json.append("\"data_decis\" : ").append(rs.getString("data_decis")).append(", ");
         json.append("\"data_solic\" : ").append(rs.getString("data_solic")).append(", ");
+        json.append("\"aprovada\" : ").append(rs.getString("aprovada")).append(", ");
         json.append("\"nome\" : ").append(rs.getString("nome")).append(", ");
         json.append("\"documento\" : ").append(rs.getString("documento"));
         json.append("}");
