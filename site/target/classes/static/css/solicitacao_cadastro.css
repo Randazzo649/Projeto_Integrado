@@ -1,0 +1,70 @@
+
+#superior{
+    background-color: black;
+}
+#logo{
+    max-width: 200px;
+}
+
+
+main{
+    padding: 50px 80px 0px 80px; 
+}
+
+.form_txt_in{
+    width: 100%;
+    height: 36px;
+    border-radius: 13px;
+    border: 1px solid black;
+    padding: 10px 10px;
+    outline: none;
+}
+.form_txt_in:invalid{
+    border: 1px solid red;
+}
+#file_in_btn{
+    height: 120px;
+    border-radius: 25px;
+    border: 1px solid rgb(155, 155, 155);
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+}
+.nao_vazio{
+    background-color: rgb(145, 250, 145);
+    border: 1px solid rgb(128, 248, 128);
+}
+.vazio{
+    background-color: rgb(255, 126, 126);
+    border: 1px solid rgb(255, 107, 107);;
+}
+#file_in_btn img{
+    width: 70px;
+    height: 70px;
+}
+#file_in_btn div{
+    width: 200px;
+}
+#file_in_btn:hover{
+    background-color:rgb(221, 221, 221) ;
+}
+
+
+#add_funcs_btn{
+    background-color: rgb(255, 97, 146);
+    border: none;
+    padding: 0px 20px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+}
+#proximo{
+    background-color: #fc7642;
+    border: none;
+    padding: 0px 20px;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+}

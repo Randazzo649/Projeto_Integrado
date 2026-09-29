@@ -13,22 +13,22 @@ import com.sistema.models.Usuario;
 @RequestMapping("/rh")
 public class RHController {
     
-    @GetMapping("/cadastro_funcionario")
+    @GetMapping("/relatorio_funcionarios")
     public String fornecerPaginaDeCadastroDeFuncionario( Model m, HttpSession sessao ){
         Usuario u = (Usuario) sessao.getAttribute("usuario");
         Empresa e = (Empresa) sessao.getAttribute("empresa");
         m.addAttribute("u", u);
         m.addAttribute("e", e);
-        return "cadastro_funcionarios.html";
+        return "relatorio_funcionarios.html";
     }
 
-    @GetMapping("/relatorio_funcionarios")
+    @GetMapping("/quadro_funcionarios")
     public String fornecerPaginaDeRelatorioDeFuncionarios(Model m, HttpSession sessao){
         Usuario u = (Usuario) sessao.getAttribute("usuario");
         Empresa e = (Empresa) sessao.getAttribute("empresa");
         m.addAttribute("u", u);
         m.addAttribute("e", e);
-        return "relatorio_funcionarios.html";
+        return "quadro_funcionarios.html";
     }
 
 }
