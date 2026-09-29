@@ -20,13 +20,16 @@ header{
     border-radius: 20px;
     font-weight: 700;
     border: none;
-    padding: 5px 40px;
+    padding: 1px 20px;
 }
 
 h1{
     color: white;
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: 700;
+}
+p{
+    font-size: 1.3vw;
 }
 #mainTxt{
     width: 45%;
@@ -41,11 +44,11 @@ h1{
     color: white;
     border: none;
     max-width: 200px;
-    padding: 5px 40px;
+    padding: 1px 15px;
 }
 
 .div_title{
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: 700;
 }
 
@@ -66,7 +69,7 @@ card{
     font-weight: 700;
 }
 .card_descricao{
-    font-size: 16px;
+    font-size: 1.1vw;
 }
 
 #perguntas{

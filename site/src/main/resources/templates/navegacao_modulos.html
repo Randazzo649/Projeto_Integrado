@@ -17,156 +17,156 @@
         </header>
 
         <main>
-            <h1><strong>HUB ADMINISTRATIVO</strong></h1>
+            <h3><strong>HUB ADMINISTRATIVO</strong></h3>
             <section>
                 <div th:if="${modulos_ids.contains(2L)}">
-                    <h3>RECURSOS HUMANOS</h3>
+                    <h6>RECURSOS HUMANOS</h6>
                     <div class="opcoes">
                         <button class="opcao" id="quadro_funcionarios_btn">
                             <img th:src="@{/imgs/quadrofuncionarios.png}">
                             <div class="botao_titulo">
-                                <h6><strong>QUADRO DE</strong></h6>
-                                <h6>FUNCIONÁRIO</h6>
+                                <span><strong>QUADRO DE</strong></span>
+                                <span>FUNCIONÁRIO</span>
                             </div>
                         </button>
                         <button class="opcao" id="folha_pagamento_btn">
                             <img th:src="@{/imgs/pagamento.png}">
                             <div class="botao_titulo">
-                                <h6><strong>CONTROLE DE</strong></h6>
-                                <h6>FOLHA DE PAGAMENTO</h6>
+                                <span><strong>CONTROLE DE</strong></span>
+                                <span>FOLHA DE PAGAMENTO</span>
                             </div>
                         </button>
                         <button class="opcao" id="banco_horas_btn">
                             <img th:src="@{/imgs/calendario.png}">
                             <div class="botao_titulo">
-                                <h6><strong>BANCO DE HORAS E</strong></h6>
-                                <h6>CALENDÁRIO DE FÉRIAS</h6>
+                                <span><strong>BANCO DE HORAS E</strong></span>
+                                <span>CALENDÁRIO DE FÉRIAS</span>
                             </div>
                         </button>
                         <button class="opcao" id="beneficios_btn">
                             <img th:src="@{/imgs/beneficio.png}">
                             <div class="botao_titulo">
-                                <h6><strong>GERENCIADOR DE</strong></h6>
-                                <h6>BENEFÍCIOS</h6>
+                                <span><strong>GERENCIADOR DE</strong></span>
+                                <span>BENEFÍCIOS</span>
                             </div>
                         </button>
                         <button class="opcao" id="funcionarios_relatorio_btn">
                             <img th:src="@{/imgs/funcionarios_report.png}">
                             <div class="botao_titulo">
-                                <h6><strong>RELATORIO DE</strong></h6>
-                                <h6>FUNCIONÁRIOS</h6>
+                                <span><strong>RELATORIO DE</strong></span>
+                                <span>FUNCIONÁRIOS</span>
                             </div>
                         </button>
                     </div>
                     <script th:src="@{/js/nav_modulos_lnks/rh.js}"></script> 
                 </div>
                 <div th:if="${modulos_ids.contains(1L)}">
-                    <h3>FINANCEIRO</h3>
+                    <h6>FINANCEIRO</h6>
                     <div class="opcoes">
                         <button class="opcao" id="geren_despesas_btn">
                             <img th:src="@{/imgs/pagamentoexterno.png}">
                             <div class="botao_titulo">
-                                <h6><strong>GERENCIADOR DE</strong></h6>
-                                <h6>DESPESAS</h6>
+                                <span><strong>GERENCIADOR DE</strong></span>
+                                <span>DESPESAS</span>
                             </div>
                         </button>
                         <button class="opcao" id="valores_receber_btn">
                             <img th:src="@{/imgs/receber.png}">
                             <div class="botao_titulo">
-                                <h6><strong>GERENCIADOR DE</strong></h6>
-                                <h6>VALORES A RECEBER</h6>
+                                <span><strong>GERENCIADOR DE</strong></span>
+                                <span>VALORES A RECEBER</span>
                             </div>
                         </button>
                         <button class="opcao" id="fluxo_caixa_btn">
                             <img th:src="@{/imgs/fluxodecaixa.png}">
                             <div class="botao_titulo">
-                                <h6><strong>RELATÓRIO DE</strong></h6>
-                                <h6>FLUXO DE CAIXA</h6>
+                                <span><strong>RELATÓRIO DE</strong></span>
+                                <span>FLUXO DE CAIXA</span>
                             </div>
                         </button>
                         <button class="opcao" id="centro_custos_btn">
                             <img th:src="@{/imgs/centrodecustos.png}">
                             <div class="botao_titulo">
-                                <h6><strong>VISUALIZAÇÃO DE</strong></h6>
-                                <h6>CENTROS DE CUSTO</h6>
+                                <span><strong>VISUALIZAÇÃO DE</strong></span>
+                                <span>CENTROS DE CUSTO</span>
                             </div>
                         </button>
                     </div>
                 </div>
                 <div th:if="${modulos_ids.contains(4L)}">
-                    <h3>ESTOQUE</h3>
+                    <h6>ESTOQUE</h6>
                     <div class="opcoes">
                         <button class="opcao" id="cadas_produtos_btn">
                             <img th:src="@{/imgs/produto.png}">
                             <div class="botao_titulo">
-                                <h6><strong>CADASTRO DE</strong></h6>
-                                <h6>PRODUTOS</h6>
+                                <span><strong>CADASTRO DE</strong></span>
+                                <span>PRODUTOS</span>
                             </div>
                         </button>
                         <button class="opcao" id="registro_inventario_btn">
                             <img th:src="@{/imgs/inventario.png}">
                             <div class="botao_titulo">
-                                <h6><strong>REGISTRO DE</strong></h6>
-                                <h6>INVENTÁRIO</h6>
+                                <span><strong>REGISTRO DE</strong></span>
+                                <span>INVENTÁRIO</span>
                             </div>
                         </button>
                         <button class="opcao" id="relatorio_inventario_btn">
                             <img th:src="@{/imgs/relatorioinventario.png}">
                             <div class="botao_titulo">
-                                <h6><strong>RELATÓRIO DE</strong></h6>
-                                <h6>INVENTÁRIO</h6>
+                                <span><strong>RELATÓRIO DE</strong></span>
+                                <span>INVENTÁRIO</span>
                             </div>
                         </button>
                     </div>
                 </div>
                 <div th:if="${modulos_ids.contains(3L)}">
-                    <h3>COMERCIAL</h3>
+                    <h6>COMERCIAL</h6>
                     <div class="opcoes">
                         <button class="opcao" id="relatorio_clientes_btn">
                             <img th:src="@{/imgs/clientes.png}">
                             <div class="botao_titulo">
-                                <h6><strong>RELATÓRIO DE</strong></h6>
-                                <h6>CLIENTES</h6>
+                                <span><strong>RELATÓRIO DE</strong></span>
+                                <span>CLIENTES</span>
                             </div>
                         </button>
                         <button class="opcao" id="registro_vendas_btn">
                             <img th:src="@{/imgs/venda.png}">
                             <div class="botao_titulo">
-                                <h6><strong>REGISTRO</strong></h6>
-                                <h6>DE VENDAS</h6>
+                                <span><strong>REGISTRO</strong></span>
+                                <span>DE VENDAS</span>
                             </div>
                         </button>
                         <button class="opcao" id="doc_comercial_btn">
                             <img th:src="@{/imgs/contrato.png}">
                             <div class="botao_titulo">
-                                <h6><strong>DOCUMENTAÇÃO</strong></h6>
-                                <h6>COMERCIAL</h6>
+                                <span><strong>DOCUMENTAÇÃO</strong></span>
+                                <span>COMERCIAL</span>
                             </div>
                         </button>
                     </div>
                 </div>
                 <div>
-                    <h3>SUPORTE</h3>
+                    <h6>SUPORTE</h6>
                     <div class="opcoes">
                         <button class="opcao" id="conf_ecossistema_btn">
                             <img th:src="@{/imgs/configuracao.png}">
                             <div class="botao_titulo">
-                                <h6><strong>CONFIGURAÇÃO DE</strong></h6>
-                                <h6>ECOSSISTEMA</h6>
+                                <span><strong>CONFIGURAÇÃO DE</strong></span>
+                                <span>ECOSSISTEMA</span>
                             </div>
                         </button>
                         <button class="opcao" id="solic_admissao_btn">
                             <img th:src="@{/imgs/admissao.png}">
                             <div class="botao_titulo">
-                                <h6><strong>SOLICITAÇÃO DE</strong></h6>
-                                <h6>ADMISSÃO</h6>
+                                <span><strong>SOLICITAÇÃO DE</strong></span>
+                                <span>ADMISSÃO</span>
                             </div>
                         </button>
                         <button class="opcao" id="alter_modulos_btn">
                             <img th:src="@{/imgs/modulos 2.png}">
                             <div class="botao_titulo">
-                                <h6><strong>ALTERAÇÃO DE</strong></h6>
-                                <h6>MÓDULOS FUNCIONAIS</h6>
+                                <span><strong>ALTERAÇÃO DE</strong></span>
+                                <span>MÓDULOS FUNCIONAIS</span>
                             </div>
                         </button>
                     </div>
