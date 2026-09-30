@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/cadastro_funcionario.css">
+    <title>UnitHub</title>
+</head>
+<body>
+    <header id="superior" class="d-flex justify-content-between align-items-center px-5 py-3">
+        <img id="logo" src="../static/imgs/logo_full.png">
+    </header>
+    <main class="container-fluid p-5">
+        <div class="pl-5 pr-5">
+            <h1><strong>CADASTRO</strong></h1>
+            <form>
+                <h2>ADICIONAR FUNCIONÁRIOS</h2>
+                <div class="row g-3">
+                    <div class="col-md-8">
+                        <label for="nome_input">Nome</label>
+                        <input type="text" id="nome_input" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="data_nascimento_input">Data de Nascimento</label>
+                        <input type="date" id="data_nascimento_input" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="cpf_input">CPF</label>
+                        <input type="text" id="cpf_input" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="genero_input">Gênero</label>
+                        <input type="text" id="genero_input" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="telefone_input">Telefone</label>
+                        <input type="text" id="telefone_input" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label for="endereco_input">
+                            Endereço
+                            <span>(logradouro, número, complemento, bairro, cidade, estado, CEP)</span>
+                        </label>
+                        <input type="text" id="endereco_input" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="data_admissao_input">Data de Admissão</label>
+                        <input type="date" id="data_admissao_input" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cargo_input">Cargo</label>
+                        <input type="text" id="cargo_input" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="departamento_input">Departamento</label>
+                        <input type="text" id="departamento_input" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="salario_input">Salário</label>
+                        <input type="text" id="salario_input" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="email_input">E-Mail</label>
+                        <input type="email" id="email_input" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="senha_input">Senha</label>
+                        <input type="password" id="senha_input" class="form-control">
+                    </div>
+                </div>
+                <div class="botoes d-flex justify-content-end gap-3">
+                    <button type="button" id="adicionar_btn">
+                        ADICIONAR MAIS
+                    </button>
+                    <button type="submit" id="salvar_btn">
+                        SALVAR
+                    </button>
+                </div>
+            </form>
+        </div>
+        <dialog class="modal">
+
+        </dialog>
+    </main>
+</body>
+</html>
