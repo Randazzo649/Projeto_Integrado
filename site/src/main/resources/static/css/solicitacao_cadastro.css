@@ -78,3 +78,10 @@ label{
     color: white;
     font-weight: 600;
 }
+
+input[type="button"]{
+    transition: opacity 0.2s;
+}
+input[type="button"]:hover {
+    opacity: 0.85;
+}

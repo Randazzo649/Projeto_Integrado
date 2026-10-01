@@ -16,7 +16,10 @@ const file_btn = document.getElementById("alterar_logo_btn");
 const salvar_btn = document.getElementById("salvar_btn");
 //variaveis controle foto
 const logo_img = document.getElementById("logo");
-
+//modal
+const modal = new bootstrap.Modal(document.getElementById("meuModal"));
+const tituloModal = document.getElementById("tituloModal");
+const conteudoModal = document.getElementById("conteudoModal");
 
 //comunicação com o back-end
 salvar_btn.onclick = () => {
@@ -32,7 +35,14 @@ salvar_btn.onclick = () => {
         method : "POST",
         body : dados
     }).then(r => {return r.text()}).then(r => {
-
+        if(r === "1"){
+            tituloModal.innerHTML = "Sucesso!";
+            conteudoModal.innerHTML = "alterações salvas com sucesso";
+        } else {
+            tituloModal.innerHTML = "Ops...";
+            conteudoModal.innerHTML = "Não foi possivel salvar estas alterações, se o problema persistir, entre em contato com a equipe de suporte.";
+        }
+        modal.show();
     })
 }
 

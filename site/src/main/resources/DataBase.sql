@@ -46,18 +46,26 @@ CREATE TABLE IF NOT EXISTS Solicitacao(
 CREATE TABLE IF NOT EXISTS Departamento(
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(15),
-    descricao VARCHAR(500)
+    descricao VARCHAR(500),
+    id_empresa BIGINT,
+
+    FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
 CREATE TABLE IF NOT EXISTS Funcionario(
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     email VARCHAR(50) NOT NULL UNIQUE,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
     senha VARCHAR(128) NOT NULL,
     cargo VARCHAR(45) NOT NULL,
     salario VARCHAR(45) NOT NULL,
-    data_admissao DATE NOT NULL,
-    estado VARCHAR(15),
+    endereco VARCHAR(120) NOT NULL,
+    data_admissao DATE NOT NULL, 
+    data_nascimento DATE NOT NULL,
+    estado VARCHAR(15) NOT NULL, 
+    genero VARCHAR(10) NOT NULL,
+    telefone VARCHAR(19) NOT NULL,
     id_empresa BIGINT NOT NULL,
     id_departamento BIGINT,
 
@@ -177,7 +185,9 @@ CREATE TABLE IF NOT EXISTS Conta(
 
 /* VIEWS */
 
-
+CREATE OR REPLACE VIEW Funcionarios_Com_Departamento AS
+SELECT f.id, f.nome, f.email, f.senha, f.cargo, f.salario, f.data_admissao, f.data_nascimento, f.estado, f.genero, f.telefone, f.id_empresa, d.id AS id_departamento, d.nome AS departamento_nome
+FROM Funcionario AS f INNER JOIN Departamento d ON f.id_departamento = d.id;
 
 /* PROCEDURES */
 
@@ -196,6 +206,21 @@ BEGIN
     UPDATE Solicitacao SET data_decis = NOW(), aprovada = 1 WHERE id = id_solicitacao;
 
     INSERT INTO empresa_has_modulo(id_empresa, id_modulo) SELECT empresa_id, id_modulo FROM solicitacao_has_modulo AS s WHERE s.id_solicitacao = id_solicitacao;
+END $$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS cadastrar_funcionario;
+DELIMITER $$
+CREATE PROCEDURE cadastrar_funcionario(IN nome_in VARCHAR(45), IN email_in VARCHAR(50), IN cpf_in VARCHAR(14), IN senha_in VARCHAR(128), IN cargo_in VARCHAR(45), IN salario_in VARCHAR(45), IN endereco_in VARCHAR(120), IN data_admissao_in DATE, IN data_nascimento_in DATE, IN estado_in VARCHAR(15), IN genero_in VARCHAR(10), IN telefone_in VARCHAR(19), IN id_empresa_in BIGINT, IN departamento_in VARCHAR(45))
+BEGIN
+    DECLARE id_departamento BIGINT;
+    SELECT id INTO id_departamento FROM Departamento WHERE id_empresa = id_empresa_in AND nome = departamento_in LIMIT 1;
+    IF id_departamento IS NULL THEN
+        INSERT INTO Departamento(nome, id_empresa) VALUES (departamento_in, id_empresa_in);
+        SET id_departamento = LAST_INSERT_ID();
+    END IF;
+    INSERT INTO Funcionario(nome, email, cpf, senha, cargo, salario, endereco, data_admissao, data_nascimento, estado, genero, telefone, id_empresa, id_departamento) VALUES (nome_in, email_in, cpf_in, senha_in, cargo_in, salario_in, endereco_in, data_admissao_in, data_nascimento_in, estado_in, genero_in, telefone_in, id_empresa_in, id_departamento);
 END $$
 DELIMITER ;
 

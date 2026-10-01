@@ -127,3 +127,10 @@ footer{
     border: none;
     padding: 5px 10px;
 }
+
+input[type="button"]{
+    transition: opacity 0.2s;
+}
+input[type="button"]:hover {
+    opacity: 0.85;
+}

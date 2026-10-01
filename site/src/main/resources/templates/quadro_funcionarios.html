@@ -31,18 +31,18 @@
                 <div id="lista_funcionarios">
                     <div class="accordion funcionario_accordion">
                         <!-- INICIO DO ACCORDION -->
-                        <div class="accordion-item">
+                        <div th:each=" func : ${funcs} " class="funcionario accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#funcionario1" aria-expanded="false" aria-controls="funcionario1">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" th:data-bs-target="'#funcionario_' + ${func.id}" aria-expanded="false" th:aria-controls="'funcionario_' + ${func.id}">
                                     <div class="funcionario_header">
                                         <div>
-                                            <strong>NOME DO FUNCIONÁRIO</strong>
-                                            <span>DEPARTAMENTO</span>
+                                            <strong th:text="${func.nome}" >NOME DO FUNCIONÁRIO</strong>
+                                            <span th:text="${func.nomeDepartamento}">DEPARTAMENTO</span>
                                         </div>
                                     </div>
                                 </button>
                             </h2>
-                            <div id="funcionario1" class="accordion-collapse collapse">
+                            <div th:id="'funcionario_' + ${func.id}" class="accordion-collapse collapse">
                                 <div class="accordion-body">
 
                                     <form id="form_funcionario">
@@ -51,25 +51,25 @@
                                             <div class="linha">
                                                 <div class="campo campo_nome">
                                                     <label for="nome">Nome</label>
-                                                    <input type="text" id="nome" name="nome" placeholder="Nome Sobrenome Último Nome" required>
+                                                    <input type="text" th:value="${func.nome}" id="nome" name="nome" placeholder="Nome Sobrenome Último Nome" required>
                                                 </div>
                                                 <div class="campo">
                                                     <label for="data_nascimento">Data de Nascimento</label>
-                                                    <input type="text" id="data_nascimento" name="data_nascimento" placeholder="XX/XX/XXXX" required>
+                                                    <input type="text" th:value="${func.data_nascimento}" id="data_nascimento" name="data_nascimento" placeholder="XX/XX/XXXX" required>
                                                 </div>
                                             </div>
                                             <div class="linha">
                                                 <div class="campo">
                                                     <label for="cpf">CPF</label>
-                                                    <input type="text" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" required>
+                                                    <input type="text" th:value="${func.cpf}" id="cpf" name="cpf" placeholder="XXX.XXX.XXX-XX" required>
                                                 </div>
                                                 <div class="campo">
                                                     <label for="genero">Gênero</label>
-                                                    <input type="text" id="genero" name="genero">
+                                                    <input type="text" th:value="${func.genero}" id="genero" name="genero">
                                                 </div>
                                                 <div class="campo">
                                                     <label for="telefone">Telefone</label>
-                                                    <input type="text" id="telefone" name="telefone">
+                                                    <input type="text" th:value="${func.telefone}" id="telefone" name="telefone">
                                                 </div>
                                             </div>
                                             <div class="campo campo_endereco">
@@ -77,30 +77,30 @@
                                                     <span>Endereço</span>
                                                     <small>Logradouro, Número, Complemento, Bairro, Cidade, Estado, CEP</small>
                                                 </label>
-                                                <input type="text" id="endereco" name="endereco" required>
+                                                <input type="text" th:value="${func.endereco}" id="endereco" name="endereco" required>
                                             </div>
                                             <div class="linha">
                                                 <div class="campo">
                                                     <label for="data_admissao">Data de Admissão</label>
-                                                    <input type="text" id="data_admissao" name="data_admissao" placeholder="XX/XX/XXXX" required>
+                                                    <input type="text" th:value="${func.data_admissao}" id="data_admissao" name="data_admissao" placeholder="XX/XX/XXXX" required>
                                                 </div>
                                                 <div class="campo">
                                                     <label for="cargo">Cargo</label>
-                                                    <input type="text" id="cargo" name="cargo" required>
+                                                    <input type="text" th:value="${func.cargo}" id="cargo" name="cargo" required>
                                                 </div>
                                                 <div class="campo">
                                                     <label for="departamento">Departamento</label>
-                                                    <input type="text" id="departamento" name="departamento" required>
+                                                    <input type="text" th:value="${func.nomeDepartamento}" id="departamento" name="departamento" required>
                                                 </div>
                                                 <div class="campo">
                                                     <label for="salario">Salário</label>
-                                                    <input type="text" id="salario" name="salario" required>
+                                                    <input type="text" th:value="${func.salario}" id="salario" name="salario" required>
                                                 </div>
                                             </div>
                                             <div class="linha">
                                                 <div class="campo campo_email">
                                                     <label for="email">E-Mail</label>
-                                                    <input type="email" id="email" name="email" required>
+                                                    <input type="email" th:value="${func.email}" id="email" name="email" required>
                                                 </div>
                                                 <div class="campo campo_senha">
                                                     <label for="senha">Senha</label>

@@ -9,9 +9,17 @@ public class Funcionario {
     private String cargo;
     private String salario;
     private String data_admissao;
+    private String data_nascimento;
     private String estado;
+    private String endereco;
+    private String cpf;
+    private String telefone;
+    private String genero;
     private long idEmpresa;
     private long idDepartamento;
+    //o atributo abaixo não deve ser carregado do banco
+    //só será usado quando necessário em views
+    private String nomeDepartamento;
 
     public long getId() {
         return id;
@@ -43,6 +51,24 @@ public class Funcionario {
     public String getSenha() {
         return senha;
     }
+    public String getData_nascimento() {
+        return data_nascimento;
+    }
+    public String getGenero() {
+        return genero;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public String getNomeDepartamento() {
+        return nomeDepartamento;
+    }
+    public String getCpf() {
+        return cpf;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
@@ -73,5 +99,23 @@ public class Funcionario {
     }
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+    public void setData_nascimento(String data_nascimento) {
+        this.data_nascimento = data_nascimento;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    public void setNomeDepartamento(String nomeDepartamento) {
+        this.nomeDepartamento = nomeDepartamento;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }

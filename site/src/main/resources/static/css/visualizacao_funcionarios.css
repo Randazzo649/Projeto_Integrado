@@ -113,6 +113,10 @@ main {
     background-color: #f5f5f5;
 }
 
+.funcionario{
+    margin-bottom: 9px;
+}
+
 /* Cabeçalho */
 
 .funcionario_accordion .accordion-button {

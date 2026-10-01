@@ -69,7 +69,7 @@ salvar_btn.onclick = () => {
         header: {"Content-Type": "multipart/form-data"}
     }).then(r => {return r.text()}).then(r => {
         if (r === "1"){
-            tituloModal.innerHTML = "Sucesso !";
+            tituloModal.innerHTML = "Sucesso!";
             conteudoModal.innerHTML = "Sua solicitação foi registrada com sucesso, enviaremos uma resposta para seu E-mail";
         } else {
             tituloModal.innerHTML = "Ops...";

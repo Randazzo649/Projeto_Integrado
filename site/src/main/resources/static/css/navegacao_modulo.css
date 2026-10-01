@@ -34,10 +34,6 @@ section{
     height: 30px;
 }
 
-.opcao:hover{
-    background-color: rgb(240, 146, 146);
-}
-
 .botao_titulo{
     display: flex;
     flex-direction: column;
