@@ -3,7 +3,7 @@ _____________________ TEMPLATE's________________________
     -> com.sistema.persistence.RepositoryTemplate (implementações em repositories)
 
 2- template de geração de relatórios
-    ->
+    ->com.sistema.generation.RelatorioTemplate (implementações em relatorioTemplates)
 
 3- template para envio de emails (rejeição, aprovação, convite, etc...) 
     -> com.sistema.external.email.MessageTemplate (implementações em messageTemplates)

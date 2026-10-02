@@ -1,9 +1,7 @@
 package com.sistema.app.controllers;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import com.sistema.percistence.Repositories.FuncionarioRepository;
 import com.sistema.percistence.Repositories.DepartamentoRepository;
 import com.sistema.models.Empresa;
 import com.sistema.models.Funcionario;
-import com.sistema.models.Departamento;
 import com.sistema.models.Usuario;
 
 
@@ -24,7 +21,6 @@ import com.sistema.models.Usuario;
 public class RHController {
     
     private FuncionarioRepository fr = new FuncionarioRepository();
-    private DepartamentoRepository dr = new DepartamentoRepository();
 
     @GetMapping("/relatorio_funcionarios")
     public String fornecerPaginaDeCadastroDeFuncionario( Model m, HttpSession sessao ){
@@ -41,15 +37,6 @@ public class RHController {
         Empresa e = (Empresa) sessao.getAttribute("empresa");
 
         List<Funcionario> funcionarios = fr.findAll("WHERE id_empresa = "+e.getId());
-        List<Departamento> departamentos = dr.findAll("WHERE id_empresa = "+e.getId());
-
-        //adiciona os nomes dos departamentos aos funcionários
-        Map<Long, String> departamentos_org = new HashMap<>();
-        for(Departamento d : departamentos)
-            departamentos_org.put(d.getId(), d.getNome());
-
-        for(Funcionario f : funcionarios)
-            f.setNomeDepartamento( departamentos_org.get(f.getIdDepartamento()) );
 
         m.addAttribute("funcs", funcionarios);
         m.addAttribute("u", u);

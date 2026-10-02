@@ -49,12 +49,12 @@ public class FuncionarioRepository extends RepositoryTemplate<Funcionario> {
 
     @Override
     protected String getSelectByIdString() {
-        return "SELECT * FROM Funcionario WHERE id = ?";
+        return "SELECT * FROM Funcionarios_Com_Departamento WHERE id = ?";
     }
 
     @Override
     protected String getSelectAllString(String filtro) {
-        return "SELECT * FROM Funcionario " + filtro;
+        return "SELECT * FROM Funcionarios_Com_Departamento " + filtro;
     }
 
     @Override
@@ -113,6 +113,7 @@ public class FuncionarioRepository extends RepositoryTemplate<Funcionario> {
         f.setTelefone(rs.getString("telefone"));
         f.setIdEmpresa(rs.getLong("id_empresa"));
         f.setIdDepartamento(rs.getLong("id_departamento"));
+        f.setNomeDepartamento(rs.getString("departamento_nome"));
 
         return f;
     }
@@ -134,7 +135,8 @@ public class FuncionarioRepository extends RepositoryTemplate<Funcionario> {
         json.append("\"genero\": \"").append(rs.getString("genero")).append("\", ");
         json.append("\"estado\": \"").append(rs.getString("estado")).append("\", ");
         json.append("\"id_empresa\": ").append(rs.getLong("id_empresa")).append(", ");
-        json.append("\"id_departamento\": ").append(rs.getLong("id_departamento"));
+        json.append("\"id_departamento\": ").append(rs.getLong("id_departamento")).append(", ");
+        json.append("\"departamento_nome\": \"").append(rs.getString("departamento_nome")).append("\"");
 
         json.append("}");
 

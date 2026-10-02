@@ -185,9 +185,10 @@ CREATE TABLE IF NOT EXISTS Conta(
 
 /* VIEWS */
 
-CREATE OR REPLACE VIEW Funcionarios_Com_Departamento AS
-SELECT f.id, f.nome, f.email, f.senha, f.cargo, f.salario, f.data_admissao, f.data_nascimento, f.estado, f.genero, f.telefone, f.id_empresa, d.id AS id_departamento, d.nome AS departamento_nome
-FROM Funcionario AS f INNER JOIN Departamento d ON f.id_departamento = d.id;
+CREATE OR REPLACE VIEW Funcionarios_Com_Departamento AS 
+SELECT f.id, f.nome, f.email, f.senha, f.cpf, f.cargo, f.salario, f.endereco, f.data_admissao, f.data_nascimento, f.estado, f.genero, f.telefone, f.id_empresa, f.id_departamento, d.nome AS departamento_nome
+FROM Funcionario AS f 
+LEFT JOIN Departamento AS d ON f.id_departamento = d.id;
 
 /* PROCEDURES */
 

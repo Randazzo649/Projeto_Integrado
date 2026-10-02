@@ -1,3 +1,16 @@
+const relatorio_download_btn = document.getElementById("exportar_pdf");
+
+
+
+relatorio_download_btn.onclick = () => {
+    const a = document.createElement("a");
+    a.href = URL_SITE + "/rh/relatorio";
+    a.download = "relatorio-rh.pdf";
+    a.click();
+}
+
+
+//configuração dos componentes visuais
 document.addEventListener("DOMContentLoaded", () => {
 
     inicializarCalendario();

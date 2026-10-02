@@ -7,3 +7,4 @@ módulos:
 -models = representação das tabelas e entidades do mundo real, também metadados
 -percistence = componentes de comunicação com o banco de dados
 -security = componentes de hash, criptografia e segurança no geral
+-generation = componentes para geração de documentos e arquivos por parte do sistema
