@@ -15,7 +15,6 @@ import java.util.List;
 import com.sistema.models.Funcionario;
 import com.sistema.models.Empresa;
 import com.sistema.percistence.Repositories.FuncionarioRepository;
-import com.sistema.percistence.Repositories.DepartamentoRepository;
 import com.sistema.security.HashConfigSingleton;
 import com.sistema.generation.relatorioTemplates.RelatorioRH;
 
@@ -25,7 +24,6 @@ import com.sistema.generation.relatorioTemplates.RelatorioRH;
 public class RHRestController {
 
     private FuncionarioRepository fr = new FuncionarioRepository();
-    private DepartamentoRepository dr = new DepartamentoRepository();
     private RelatorioRH relatorioRH;
     
     @PostMapping("cadastrar_funcionario")

@@ -8,3 +8,4 @@ módulos:
 -percistence = componentes de comunicação com o banco de dados
 -security = componentes de hash, criptografia e segurança no geral
 -generation = componentes para geração de documentos e arquivos por parte do sistema
+-util = componentes feitos a fim de serem usados na lógica de negócio, sem um foco em comum

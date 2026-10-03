@@ -8,14 +8,14 @@ import java.sql.SQLException;
 
 import com.sistema.models.Funcionario;
 import com.sistema.percistence.RepositoryTemplate;
-import com.sistema.percistence.configs.DataBaseConfig;
+import com.sistema.percistence.configs.DataBaseConfigSingleton;
 
 public class FuncionarioRepository extends RepositoryTemplate<Funcionario> {
 
     public void inserirFuncionario(Funcionario f, String departamento) throws SQLException {
         String sql = "{CALL cadastrar_funcionario(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 
-        try (Connection conn = DataBaseConfig.getInstance().conectarSql();
+        try (Connection conn = DataBaseConfigSingleton.getInstance().conectarSql();
              CallableStatement stmt = conn.prepareCall(sql)) {
 
             stmt.setString(1, f.getNome());

@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpSession;
 
 import com.sistema.percistence.Repositories.FuncionarioRepository;
-import com.sistema.percistence.Repositories.DepartamentoRepository;
+import com.sistema.utils.RelatorioStrategy;
+import com.sistema.utils.relatorioStrategies.RHRelatorioStrategy;
 import com.sistema.models.Empresa;
 import com.sistema.models.Funcionario;
 import com.sistema.models.Usuario;
@@ -23,11 +24,17 @@ public class RHController {
     private FuncionarioRepository fr = new FuncionarioRepository();
 
     @GetMapping("/relatorio_funcionarios")
-    public String fornecerPaginaDeCadastroDeFuncionario( Model m, HttpSession sessao ){
+    public String fornecerPaginaDeCadastroDeFuncionario( Model m, HttpSession sessao ) throws SQLException{
         Usuario u = (Usuario) sessao.getAttribute("usuario");
         Empresa e = (Empresa) sessao.getAttribute("empresa");
+        RelatorioStrategy<Funcionario> relatorioStrategy = new RHRelatorioStrategy();
+
+        List<Funcionario> funcionarios = fr.findAll("WHERE id_empresa = "+e.getId());
+
         m.addAttribute("u", u);
         m.addAttribute("e", e);
+        relatorioStrategy.adicionarIndicadores(m, funcionarios);
+        m.addAttribute("funcionarios", funcionarios);
         return "relatorio_funcionarios.html";
     }
 

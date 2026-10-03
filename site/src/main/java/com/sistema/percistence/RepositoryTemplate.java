@@ -5,11 +5,11 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import com.sistema.percistence.configs.DataBaseConfig;
+import com.sistema.percistence.configs.DataBaseConfigSingleton;
 
 
 public abstract class RepositoryTemplate<T> {
-    protected static DataBaseConfig bd = DataBaseConfig.getInstance();
+    protected static DataBaseConfigSingleton bd = DataBaseConfigSingleton.getInstance();
 
     public RepositoryTemplate() {
         

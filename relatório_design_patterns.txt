@@ -2,7 +2,7 @@ _____________________ TEMPLATE's________________________
 1- template de banco de dados 
     -> com.sistema.persistence.RepositoryTemplate (implementações em repositories)
 
-2- template de geração de relatórios
+2- template de geração de relatórios EM PDF
     ->com.sistema.generation.RelatorioTemplate (implementações em relatorioTemplates)
 
 3- template para envio de emails (rejeição, aprovação, convite, etc...) 
@@ -13,9 +13,10 @@ _____________________ SINGLETON's________________________
 
 5- singleton de persistencia de arquivos 
     -> com.sistema.persistence.configs.FilePersistenceConfig
-_____________________ X's________________________
-6- 
-
-7- 
-
-8- 
+_____________________ STRATEGY's________________________
+6- strategy de geração de relatórios 
+    -> com.sistema.<nao decidi o nome da pasta>.RelatorioHandler
+7- strategy de validação de dados vindos do front-end 
+    -> com.sistema.security.ValidationHandler
+8- strategy de tratamento de uploads de arquivos
+    -> com.sistema.security.filePersistenceHandler

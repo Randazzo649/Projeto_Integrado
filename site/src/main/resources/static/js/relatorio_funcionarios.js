@@ -1,16 +1,64 @@
 const relatorio_download_btn = document.getElementById("exportar_pdf");
 
-
+const funcionario_departamento_canvas = document.getElementById("grafico_departamentos");
+const percentual_funcionarios_situacao_canvas = document.getElementById("grafico_situacao");
 
 relatorio_download_btn.onclick = () => {
     const a = document.createElement("a");
     a.href = URL_SITE + "/rh/relatorio";
     a.download = "relatorio-rh.pdf";
     a.click();
+    a.remove();
 }
 
 
 //configuração dos componentes visuais
+
+//grafico funcionarios por departamento
+
+//a variavel departamento vem pelo thymeleaf
+new Chart(funcionario_departamento_canvas, {
+    type: 'bar',
+    data: {
+        labels: Object.keys(departamentos),
+        datasets: [{
+            label: 'Numero de Funcionários',
+            data: Object.values(departamentos)
+        }]
+    },
+    options: {
+        indexAxis: 'y'
+    }
+});
+
+//grafico percentual de funcionarios por situacao
+const funcionarios_situacao = {
+    "ativos": ativo,
+    "inativos": inativo,
+    "ferias": ferias,
+    "licenca": licenca
+};
+new Chart(percentual_funcionarios_situacao_canvas, {
+    type: 'pie',
+    data: {
+        labels: Object.keys(funcionarios_situacao),
+        datasets: [{
+            data: Object.values(funcionarios_situacao)
+        }]
+    }
+});
+
+
+//calendario
+
+const admissao_span = Array.from(document.getElementsByClassName("admissao_span"));
+const admissoes = [];
+admissao_span.forEach(e => {
+    admissoes.push(e.innerHTML)
+})
+
+const desligamentos = [];
+
 document.addEventListener("DOMContentLoaded", () => {
 
     inicializarCalendario();
@@ -120,17 +168,6 @@ function colorirDatas() {
      *
      * Posteriormente poderão vir do backend.
      */
-
-    const admissoes = [
-        "2026-09-02",
-        "2026-09-18",
-        "2026-09-21"
-    ];
-
-    const desligamentos = [
-        "2026-09-07",
-        "2026-09-14"
-    ];
 
     const dias = document.querySelectorAll(
         "#calendario span[data-date]"
