@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/quadro_empresas.css}">
+    <title>UnitHub</title>
+</head>
+
+<body>
+    <header>
+        <div id="superior" class="d-flex justify-content-between align-items-center px-5 py-3">
+            <img th:src="@{/imgs/logo_full.png}" alt="" id="logo">
+        </div>
+    </header>
+    <main>
+        <div class="d-flex align-item-center flex-column justify-content-center">
+            <div class="d-flex align-items-center justify-content-between">
+                <h1><strong>MASTERBOARD</strong></h1>
+                <button type="button" id="voltar">VOLTAR</button>
+            </div>
+            <h2>REMOVER EMPRESA EXISTENTE</h2>
+        </div>
+
+        <section id="empresas" class="d-flex align-items-center flex-column">
+            <div id="item-empresa" class="accordion">
+                <!--ITEM ACCORDION-->
+                <div th:each="e : ${empresas}" class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#empresa" aria-expanded="false" aria-controls="empresa">
+                            <div class="empresa-header">
+                                <div>
+                                    <strong th:text="${e.nome}">NOME DA EMPRESA</strong>
+                                    <span th:text="${e.cnpj}">CNPJ</span>
+                                </div>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="empresa" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            <div class="dados-linha">
+                                <div>
+                                    <label for="razao"><strong>Razão Social:</strong></label>
+                                    <span id="razao" th:text="${e.razao}">VAI AQUI</span>
+                                </div>
+                                <div>
+                                    <label for="cnpj"><strong>CNPJ:</strong></label>
+                                    <span id="cnpj" th:text="${e.cnpj}">XX.XXX.XXX/XXXX-XX</span>
+                                </div>
+                            </div>
+                            <div class="dados-linha">
+                                <div>
+                                    <label for="nome"><strong>Nome Fantasia:</strong></label>
+                                    <span id="nome" th:text="${e.nome}">VAI AQUI</span>
+                                </div>
+                                <div>
+                                    <label for="telefone"><strong>Telefone:</strong></label>
+                                    <span id="telefone" th:text="${e.telefone}">(XX) XXXX-XXXX</span>
+                                </div>
+                            </div>
+                            <div class="dados-linha">
+                                <div>
+                                    <label for="endereco"><strong>Endereço:</strong></label>
+                                    <span id="endereco" th:text="${e.endereco}">RUA, NÚMERO, COMPLEMENTO, BAIRRO,
+                                        CIDADE, ESTADO, CEP</span>
+                                </div>
+                                <div>
+                                    <label for="ativa"><strong>Ativa:</strong></label>
+                                    <span id="ativa" th:text="${e.ativo} ? 'Ativo' : 'Inativa' ">VAI AQUI</span>
+                                </div>
+                            </div>
+                            <div class="remover-container">
+                                <button type="button" class="desativar"
+                                    th:onclick="'desativarEmpresa(' + ${e.id} + ')'">DESATIVAR</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- MODAL DE CONFIRMAÇÃO DE ENVIO -->
+        <div class="modal fade" id="meuModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="tituloModal"></h3>
+
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+                    </div>
+
+                    <div id="conteudoModal" class="modal-body d-flex gap-4">
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/js/config.js}"></script>
+    <script th:src="@{/js/quadro_empresas.js}"></script>
+</body>
+
+</html>

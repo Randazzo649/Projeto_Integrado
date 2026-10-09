@@ -54,6 +54,6 @@ public class EmpresaHomeController {
         m.addAttribute("e", e);
         return "personalizacao_empresa.html";
     }
-
+    
 }
 

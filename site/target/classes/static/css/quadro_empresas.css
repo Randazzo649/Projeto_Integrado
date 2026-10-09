@@ -1,0 +1,113 @@
+@import url("header_personalizacoes.css");
+@import url("btn_voltar.css");
+
+main {
+    padding: 2% 6%;
+}
+
+main h2 {
+    padding-left: 1.5%;
+}
+
+#empresas {
+    width: 100%;
+    margin-top: 2%;
+}
+
+#item-empresa {
+    width: 82%;
+    max-width: 900px;
+}
+
+#item-empresa .accordion-item {
+    border: 1px solid #d0d0d0;
+    border-radius: 13px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+
+#item-empresa .accordion-button {
+    min-height: 52px;
+    padding: 6px 17px;
+    background-color: #dedede;
+    color: black;
+    box-shadow: none;
+}
+
+#item-empresa .accordion-button:not(.collapsed) {
+    background-color: #dedede;
+    color: black;
+    box-shadow: none;
+}
+
+#item-empresa .accordion-button:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.empresa-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.empresa-header div {
+    display: flex;
+    flex-direction: column;
+}
+
+.empresa-header strong {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.empresa-header span {
+    margin-top: 2px;
+    font-size: 11px;
+}
+
+#item-empresa .accordion-body {
+    padding: 22px 25px 20px 25px;
+    background-color: #f5f5f5;
+}
+
+.dados-linha {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.dados-linha>div {
+    flex: 1;
+    min-width: 0;
+    font-size: 12px;
+}
+
+.dados-linha strong {
+    font-weight: bold;
+}
+
+.remover-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.desativar{
+    height: 35px;
+    padding: 0 25px;
+    border: none;
+    border-radius: 20px;
+    background-color:  #df0000;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.desativar:hover {
+    background-color: #d46868;
+}

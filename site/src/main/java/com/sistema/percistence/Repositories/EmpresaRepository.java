@@ -11,12 +11,12 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
 
     @Override
     protected String getInsertionString() {
-        return "INSERT INTO Empresa(razao, cnpj, telefone, endereco, foto, cor, nome) VALUES (?,?,?,?,?,?,?)";
+        return "INSERT INTO Empresa(razao, cnpj, telefone, endereco, foto, cor, nome, ativo) VALUES (?,?,?,?,?,?,?,?)";
     }
 
     @Override
     protected String getUpdateString() {
-        return "UPDATE Empresa SET razao = ?, cnpj = ?, telefone = ?, endereco = ?, foto = ?, cor = ?, nome = ? WHERE id = ?;";
+        return "UPDATE Empresa SET razao = ?, cnpj = ?, telefone = ?, endereco = ?, foto = ?, cor = ?, nome = ?, ativo = ? WHERE id = ?;";
     }
 
     @Override
@@ -38,6 +38,7 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
         stmt.setString(5,entity.getFoto());
         stmt.setString(6, entity.getCor());
         stmt.setString(7,entity.getNome());
+        stmt.setBoolean(8,entity.isAtivo());
     }
 
     @Override
@@ -49,7 +50,8 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
         stmt.setString(5,entity.getFoto());
         stmt.setString(6, entity.getCor());
         stmt.setString(7,entity.getNome());
-        stmt.setLong(8, entity.getId());
+        stmt.setBoolean(8, entity.isAtivo());
+        stmt.setLong(9, entity.getId());
     }
 
     @Override
@@ -63,6 +65,7 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
         e.setFoto(rs.getString("foto"));
         e.setCor(rs.getString("cor"));
         e.setNome(rs.getString("nome"));
+        e.setAtivo(rs.getBoolean("ativo"));
         return e;
     }
 
@@ -77,7 +80,8 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
         json.append("\"endereco\" : ").append(rs.getString("endereco")).append(", ");
         json.append("\"foto\" : ").append(rs.getString("foto")).append(", ");
         json.append("\"cor\" : ").append(rs.getString("cor")).append(", ");
-        json.append("\"nome\" : ").append(rs.getString("nome"));
+        json.append("\"nome\" : ").append(rs.getString("nome")).append(", ");
+        json.append("\"nome\" : ").append(rs.getString("ativo"));
         json.append("}");
         return json.toString();
     }

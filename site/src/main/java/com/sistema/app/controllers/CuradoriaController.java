@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sistema.models.Empresa;
 import com.sistema.models.Solicitacao;
 import com.sistema.models.Usuario;
+import com.sistema.percistence.Repositories.EmpresaRepository;
 import com.sistema.percistence.Repositories.SolicitacaoRepository;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ import jakarta.servlet.http.HttpSession;
 public class CuradoriaController {
 
     private SolicitacaoRepository solicitacaoRepository = new SolicitacaoRepository();
+    private EmpresaRepository empresaRepository  = new EmpresaRepository();
     
     @GetMapping("/home")
     public String fornecerPaginaDeCuradoria(HttpSession sessao, Model m){
@@ -37,5 +40,12 @@ public class CuradoriaController {
         m.addAttribute("solicitacoes", solicitacoes);
         return "solicitacoes_avaliacao.html";
     }
-
+    @GetMapping("/empresas")
+    public String retornarPaginaDeQuadroDeEmpresas(HttpSession sessao, Model m) throws SQLException{
+        Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+        ArrayList<Empresa> empresas = empresaRepository.findAll("");
+        m.addAttribute("u", usuario);
+        m.addAttribute("empresas", empresas);
+        return "quadro_empresas.html";
+    }
 }

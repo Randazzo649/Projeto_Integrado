@@ -4,19 +4,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DataBaseConfig{
+public class DataBaseConfigSingleton{
 
-    private static DataBaseConfig conf;
+    private static DataBaseConfigSingleton conf;
 
     private static String caminho = "jdbc:mysql://127.0.0.1/UnitHub";
     private static String senha = "";
     private static String usuario = "root";
 
-    private DataBaseConfig(){}
+    private DataBaseConfigSingleton(){}
 
-    public static DataBaseConfig getInstance(){
+    public static DataBaseConfigSingleton getInstance(){
         if(conf == null)
-            conf = new DataBaseConfig();
+            conf = new DataBaseConfigSingleton();
         return conf;
     }
 
