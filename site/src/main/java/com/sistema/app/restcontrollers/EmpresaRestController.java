@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpSession;
+
+import com.sistema.models.Solicitacao;
+import com.sistema.percistence.configs.FilePersistenceConfigSingleton;
+import com.sistema.security.HashConfigSingleton;
 import com.sistema.external.email.EmailSender;
 import com.sistema.external.email.messageTemplates.EmailAprovacao;
 import com.sistema.external.email.messageTemplates.EmailReprovacao;
