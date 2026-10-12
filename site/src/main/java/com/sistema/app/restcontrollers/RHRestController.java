@@ -16,6 +16,7 @@ import com.sistema.models.Funcionario;
 import com.sistema.models.Empresa;
 import com.sistema.percistence.Repositories.FuncionarioRepository;
 import com.sistema.security.HashConfigSingleton;
+import com.sistema.security.validadors.FuncionarioValidatorStrategy;
 import com.sistema.generation.relatorioTemplates.RelatorioRH;
 
 
@@ -24,6 +25,7 @@ import com.sistema.generation.relatorioTemplates.RelatorioRH;
 public class RHRestController {
 
     private FuncionarioRepository fr = new FuncionarioRepository();
+    private FuncionarioValidatorStrategy fvs = new FuncionarioValidatorStrategy();
     private RelatorioRH relatorioRH;
     
     @PostMapping("cadastrar_funcionario")
@@ -47,8 +49,10 @@ public class RHRestController {
         f.setCpf(cpf);
         f.setEndereco(endereco);
         
-        fr.inserirFuncionario(f, departamento);
+        if(!fvs.isValido(f))
+            return "0";
 
+        fr.inserirFuncionario(f, departamento);
         return "1";
     }
 

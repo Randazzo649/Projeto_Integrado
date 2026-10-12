@@ -2,7 +2,8 @@ package com.sistema;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import com.sistema.security.FilePersistenceConfigSingleton;
+
+import com.sistema.percistence.configs.FilePersistenceConfigSingleton;
 
 
 @SpringBootApplication()

@@ -19,18 +19,14 @@ import jakarta.servlet.http.HttpSession;
 import com.sistema.models.Solicitacao;
 import com.sistema.percistence.configs.FilePersistenceConfigSingleton;
 import com.sistema.security.HashConfigSingleton;
+import com.sistema.security.validadors.SolicitacaoValidatorStrategy;
 import com.sistema.external.email.EmailSender;
 import com.sistema.external.email.messageTemplates.EmailAprovacao;
 import com.sistema.external.email.messageTemplates.EmailReprovacao;
 import com.sistema.models.Empresa;
-import com.sistema.models.Solicitacao;
 import com.sistema.percistence.Repositories.EmpresaRepository;
 import com.sistema.percistence.Repositories.SolicitacaoRepository;
-import com.sistema.security.FilePersistenceConfigSingleton;
-import com.sistema.security.HashConfigSingleton;
 
-import jakarta.mail.MessagingException;
-import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("/empresa")
@@ -38,6 +34,7 @@ public class EmpresaRestController {
 
     private SolicitacaoRepository sr = new SolicitacaoRepository();
     private EmpresaRepository er = new EmpresaRepository();
+    private SolicitacaoValidatorStrategy svs = new SolicitacaoValidatorStrategy();
     @Autowired private EmailSender emailSender;
     
     @PostMapping("/solicitacao")
@@ -58,9 +55,13 @@ public class EmpresaRestController {
         s.setEmail(email);
         s.setSenha(HashConfigSingleton.getInstance().hash(senha));
         s.setNome(nome);
+        s.setDocumento(FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoRelativo());
+        
+        if(!svs.isValido(s))
+            return "0";
+        
         //define o local do documento
         multiFile.transferTo(new File(caminhoArquivoAbsoluto));
-        s.setDocumento(FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoRelativo());
         //salva a solicitação no banco de dados
         long id = sr.cadastrar(s);
         sr.adicionarModulos(modulosEscolhidos, id);

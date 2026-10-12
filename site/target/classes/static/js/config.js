@@ -1,1 +1,0 @@
-const URL_SITE = "http://" + window.location.hostname + ":8080"

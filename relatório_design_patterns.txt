@@ -15,8 +15,7 @@ _____________________ SINGLETON's________________________
     -> com.sistema.persistence.configs.FilePersistenceConfig
 _____________________ STRATEGY's________________________
 6- strategy de geração de relatórios 
-    -> com.sistema.<nao decidi o nome da pasta>.RelatorioHandler
+    -> com.sistema.<nao decidi o nome da pasta>.RelatorioStrategy
 7- strategy de validação de dados vindos do front-end 
-    -> com.sistema.security.ValidationHandler
-8- strategy de tratamento de uploads de arquivos
-    -> com.sistema.security.filePersistenceHandler
+    -> com.sistema.security.ValidationStrategy
+8- 
