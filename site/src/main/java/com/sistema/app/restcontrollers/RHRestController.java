@@ -13,8 +13,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.sistema.models.Funcionario;
+import com.sistema.persistence.Repositories.FuncionarioRepository;
 import com.sistema.models.Empresa;
-import com.sistema.percistence.Repositories.FuncionarioRepository;
 import com.sistema.security.HashConfigSingleton;
 import com.sistema.security.validadors.FuncionarioValidatorStrategy;
 import com.sistema.generation.relatorioTemplates.RelatorioRH;

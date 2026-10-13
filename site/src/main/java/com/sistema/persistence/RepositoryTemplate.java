@@ -1,11 +1,12 @@
-package com.sistema.percistence;
+package com.sistema.persistence;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import com.sistema.percistence.configs.DataBaseConfigSingleton;
+
+import com.sistema.persistence.configs.DataBaseConfigSingleton;
 
 
 public abstract class RepositoryTemplate<T> {

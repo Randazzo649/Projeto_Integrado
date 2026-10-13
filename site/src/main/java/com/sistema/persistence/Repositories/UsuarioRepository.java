@@ -1,4 +1,4 @@
-package com.sistema.percistence.Repositories;
+package com.sistema.persistence.Repositories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.sistema.models.Usuario;
-import com.sistema.percistence.RepositoryTemplate;
+import com.sistema.persistence.RepositoryTemplate;
 
 public class UsuarioRepository extends RepositoryTemplate<Usuario> {
 

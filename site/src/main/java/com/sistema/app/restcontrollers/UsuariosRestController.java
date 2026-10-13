@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sistema.models.Usuario;
-import com.sistema.percistence.Repositories.UsuarioRepository;
+import com.sistema.persistence.Repositories.UsuarioRepository;
 import com.sistema.security.HashConfigSingleton;
 
 import jakarta.servlet.http.HttpSession;

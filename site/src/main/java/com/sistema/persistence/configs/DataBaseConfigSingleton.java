@@ -1,4 +1,4 @@
-package com.sistema.percistence.configs;
+package com.sistema.persistence.configs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

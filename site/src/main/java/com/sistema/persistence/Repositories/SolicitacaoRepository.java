@@ -1,4 +1,4 @@
-package com.sistema.percistence.Repositories;
+package com.sistema.persistence.Repositories;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.sistema.models.Solicitacao;
-import com.sistema.percistence.RepositoryTemplate;
+import com.sistema.persistence.RepositoryTemplate;
 
 
 public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{

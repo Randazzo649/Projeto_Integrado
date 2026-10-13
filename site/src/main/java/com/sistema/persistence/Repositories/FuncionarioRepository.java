@@ -1,4 +1,4 @@
-package com.sistema.percistence.Repositories;
+package com.sistema.persistence.Repositories;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.sistema.models.Funcionario;
-import com.sistema.percistence.RepositoryTemplate;
-import com.sistema.percistence.configs.DataBaseConfigSingleton;
+import com.sistema.persistence.RepositoryTemplate;
+import com.sistema.persistence.configs.DataBaseConfigSingleton;
 
 public class FuncionarioRepository extends RepositoryTemplate<Funcionario> {
 

@@ -1,4 +1,4 @@
-package com.sistema.percistence.configs;
+package com.sistema.persistence.configs;
 
 import java.io.File;
 
@@ -14,10 +14,6 @@ public class FilePersistenceConfigSingleton {
     //logos
     private String outLogosEmpresasAbsoluto = outAbsoluto + "/logosEmpresas";
     private String outLogosEmpresasRelativo = outRelativo + "/logosEmpresas";
-    //validação de arquivos
-    private String[] extencoesPermitidas = {
-        "pdf", "png", "jpeg", "jpg"
-    };
 
 
     private FilePersistenceConfigSingleton(){}
@@ -44,20 +40,6 @@ public class FilePersistenceConfigSingleton {
 
     public String getOutLogosEmpresasRelativo() {
         return outLogosEmpresasRelativo;
-    }
-
-    public boolean isValido(String caminho){
-
-        String[] arquivoPartes = caminho.split("\\.");
-        if (arquivoPartes.length < 2)
-            return false;
-
-        String arquivoExtencao = arquivoPartes[arquivoPartes.length - 1];
-        for (String extencaoPermitida : extencoesPermitidas)
-            if (arquivoExtencao.equalsIgnoreCase(extencaoPermitida))
-                return true;
-
-        return false;
     }
 
     public void configurarDiretorios(){

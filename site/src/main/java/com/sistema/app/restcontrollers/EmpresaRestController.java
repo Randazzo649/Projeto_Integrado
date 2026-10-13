@@ -1,6 +1,5 @@
 package com.sistema.app.restcontrollers;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -17,15 +16,16 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpSession;
 
 import com.sistema.models.Solicitacao;
-import com.sistema.percistence.configs.FilePersistenceConfigSingleton;
+import com.sistema.persistence.Repositories.EmpresaRepository;
+import com.sistema.persistence.Repositories.SolicitacaoRepository;
 import com.sistema.security.HashConfigSingleton;
 import com.sistema.security.validadors.SolicitacaoValidatorStrategy;
 import com.sistema.external.email.EmailSender;
 import com.sistema.external.email.messageTemplates.EmailAprovacao;
+import com.sistema.persistence.FilePersistenceStrategies.PdfPersistenceStrategy;
+import com.sistema.persistence.FilePersistenceStrategies.PngPersistenceStrategy;
 import com.sistema.external.email.messageTemplates.EmailReprovacao;
 import com.sistema.models.Empresa;
-import com.sistema.percistence.Repositories.EmpresaRepository;
-import com.sistema.percistence.Repositories.SolicitacaoRepository;
 
 
 @RestController
@@ -35,19 +35,15 @@ public class EmpresaRestController {
     private SolicitacaoRepository sr = new SolicitacaoRepository();
     private EmpresaRepository er = new EmpresaRepository();
     private SolicitacaoValidatorStrategy svs = new SolicitacaoValidatorStrategy();
+    private PdfPersistenceStrategy pdfStrategy = new PdfPersistenceStrategy();
+    private PngPersistenceStrategy pngStrategy = new PngPersistenceStrategy();
     @Autowired private EmailSender emailSender;
     
     @PostMapping("/solicitacao")
     public String cadastroDeSolicitacaoDeContaEmpresarial( @RequestParam("razao") String razao, @RequestParam("cnpj") String cnpj,  @RequestParam("telefone") String telefone, @RequestParam("endereco") String endereco,  @RequestParam("email") String email, @RequestParam("senha") String senha, @RequestParam("nome") String nome, @RequestParam("file") MultipartFile multiFile, @RequestParam("modulos") String modulos) throws IOException, SQLException {
-        //declara as variaveis necessárias para a operação
-        String[] modulosEscolhidos = modulos.split(","); 
+        String[] modulosEscolhidos = modulos.split(",");
         Solicitacao s = new Solicitacao();
-        String outAbsoluto = FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoAbsoluto();
-        String caminhoArquivoAbsoluto = outAbsoluto + "/" + multiFile.getOriginalFilename();
-        //valida as informacoes que necessitam de validação
-        if(!FilePersistenceConfigSingleton.getInstance().isValido(caminhoArquivoAbsoluto))
-            return "arquivo fornecido inválido, cheque se a extenção é permitida";
-        //define os dados iniciais
+
         s.setRazaoSocial(razao);
         s.setCnpj(cnpj);
         s.setTelefone(telefone);
@@ -55,16 +51,15 @@ public class EmpresaRestController {
         s.setEmail(email);
         s.setSenha(HashConfigSingleton.getInstance().hash(senha));
         s.setNome(nome);
-        s.setDocumento(FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoRelativo());
-        
-        if(!svs.isValido(s))
+
+        if (!svs.isValido(s))
             return "o formulário foi preenchido de forma inválida, cheque os dados fornecidos ou tente novamente";
-        
-        //define o local do documento
-        multiFile.transferTo(new File(caminhoArquivoAbsoluto));
-        //salva a solicitação no banco de dados
+
+        s.setDocumento(pdfStrategy.salvar(multiFile));
+
         long id = sr.cadastrar(s);
         sr.adicionarModulos(modulosEscolhidos, id);
+
         return "1";
     }
 
@@ -94,20 +89,17 @@ public class EmpresaRestController {
     @PostMapping("/salvar_alteracoes")
     public String salvarAlteracoes(HttpSession sessao, @RequestParam(value="cor", required = false) String cor, @RequestParam(value="foto", required = false) MultipartFile logo) throws SQLException, IOException{
   
-        FilePersistenceConfigSingleton fpc = FilePersistenceConfigSingleton.getInstance();
-        
         Empresa empresa = (Empresa) sessao.getAttribute("empresa");
-        if(cor != null)
+
+        if (cor != null)
             empresa.setCor(cor);
-        
-        if(logo != null && !logo.isEmpty()){
-            String nomeArquivo = logo.getOriginalFilename();
-            String caminhoAbsoluto = fpc.getOutLogosEmpresasAbsoluto() + "/" + nomeArquivo;
-            String caminhoRelativo = fpc.getOutLogosEmpresasRelativo() + "/" + nomeArquivo;
-            if(!fpc.isValido(caminhoAbsoluto))
+
+        if (logo != null && !logo.isEmpty()) {
+            try {
+                empresa.setFoto(pngStrategy.salvar(logo));
+            } catch (IOException e) {
                 return "0";
-            logo.transferTo(new File(caminhoAbsoluto));
-            empresa.setFoto(caminhoRelativo);
+            }
         }
 
         er.salvarEstadoAtual(empresa);

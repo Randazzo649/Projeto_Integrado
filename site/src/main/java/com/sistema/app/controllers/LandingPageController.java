@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sistema.models.Modulo;
-import com.sistema.percistence.Repositories.ModuloRepository;
+import com.sistema.persistence.Repositories.ModuloRepository;
 
 
 @Controller

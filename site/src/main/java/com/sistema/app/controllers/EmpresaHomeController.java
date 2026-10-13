@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sistema.models.Empresa;
 import com.sistema.models.Modulo;
 import com.sistema.models.Usuario;
-import com.sistema.percistence.Repositories.EmpresaRepository;
-import com.sistema.percistence.Repositories.ModuloRepository;
+import com.sistema.persistence.Repositories.EmpresaRepository;
+import com.sistema.persistence.Repositories.ModuloRepository;
 
 import jakarta.servlet.http.HttpSession;
 

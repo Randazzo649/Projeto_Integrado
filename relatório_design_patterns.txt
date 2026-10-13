@@ -12,10 +12,11 @@ _____________________ SINGLETON's________________________
     -> com.sistema.persistence.configs.DataBaseConfig
 
 5- singleton de persistencia de arquivos 
-    -> com.sistema.persistence.configs.FilePersistenceConfig
+    -> com.sistema.security.HashConfigSingleton
 _____________________ STRATEGY's________________________
 6- strategy de geração de relatórios 
-    -> com.sistema.<nao decidi o nome da pasta>.RelatorioStrategy
+    -> com.sistema.utils.RelatorioStrategy
 7- strategy de validação de dados vindos do front-end 
     -> com.sistema.security.ValidationStrategy
-8- 
+8- strategy para salvamento e validação de arquivos
+    -> com.sistema.persistence.FilePersistenceStretegy

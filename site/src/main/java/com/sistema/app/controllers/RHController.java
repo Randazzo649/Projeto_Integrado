@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpSession;
 
-import com.sistema.percistence.Repositories.FuncionarioRepository;
 import com.sistema.utils.RelatorioStrategy;
 import com.sistema.utils.relatorioStrategies.RHRelatorioStrategy;
 import com.sistema.models.Empresa;
 import com.sistema.models.Funcionario;
 import com.sistema.models.Usuario;
+import com.sistema.persistence.Repositories.FuncionarioRepository;
 
 
 @Controller 

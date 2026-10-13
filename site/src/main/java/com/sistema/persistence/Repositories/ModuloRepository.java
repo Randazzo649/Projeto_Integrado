@@ -1,4 +1,4 @@
-package com.sistema.percistence.Repositories;
+package com.sistema.persistence.Repositories;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sistema.models.Modulo;
-import com.sistema.percistence.RepositoryTemplate;
+import com.sistema.persistence.RepositoryTemplate;
 
 public class ModuloRepository extends RepositoryTemplate<Modulo> {
 
