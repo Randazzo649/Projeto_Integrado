@@ -46,7 +46,7 @@ public class EmpresaRestController {
         String caminhoArquivoAbsoluto = outAbsoluto + "/" + multiFile.getOriginalFilename();
         //valida as informacoes que necessitam de validação
         if(!FilePersistenceConfigSingleton.getInstance().isValido(caminhoArquivoAbsoluto))
-            return "0";
+            return "arquivo fornecido inválido, cheque se a extenção é permitida";
         //define os dados iniciais
         s.setRazaoSocial(razao);
         s.setCnpj(cnpj);
@@ -58,7 +58,7 @@ public class EmpresaRestController {
         s.setDocumento(FilePersistenceConfigSingleton.getInstance().getOutDocumentosSolicitacaoRelativo());
         
         if(!svs.isValido(s))
-            return "0";
+            return "o formulário foi preenchido de forma inválida, cheque os dados fornecidos ou tente novamente";
         
         //define o local do documento
         multiFile.transferTo(new File(caminhoArquivoAbsoluto));

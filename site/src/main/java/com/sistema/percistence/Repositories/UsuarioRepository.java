@@ -34,6 +34,11 @@ public class UsuarioRepository extends RepositoryTemplate<Usuario> {
 	}
 
 	@Override
+	protected String getDeleteString(){
+		return "DELETE FROM Usuario WHERE id = ?";
+	}
+
+	@Override
 	protected String getSelectByIdString() {
 		return "SELECT * FROM Usuario WHERE id = ?";
 	}

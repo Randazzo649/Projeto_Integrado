@@ -20,6 +20,11 @@ public class EmpresaRepository extends RepositoryTemplate<Empresa>{
     }
 
     @Override
+	protected String getDeleteString(){
+		return "DELETE FROM Empresa WHERE id = ?";
+	}
+
+    @Override
     protected String getSelectByIdString() {
         return "SELECT * FROM Empresa WHERE id = ?";
     }

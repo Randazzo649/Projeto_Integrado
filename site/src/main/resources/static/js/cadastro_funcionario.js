@@ -44,3 +44,35 @@ salvar_btn.onclick = () => {
         modal.show();
     });
 }
+
+//configuração dos compontentes da página
+
+//configura formatação do campo telefone da etapa 1
+telefone.oninput = () => {
+    let valor = telefone.value.replace(/\D/g, "").slice(0, 13);
+
+    if (valor.length > 0)
+        valor = "+" + valor;
+    if (valor.length > 3)
+        valor = valor.slice(0, 3) + " (" + valor.slice(3);
+    if (valor.length > 7)
+        valor = valor.slice(0, 7) + ") " + valor.slice(7);
+    if (valor.length > 13)
+        valor = valor.slice(0, 14) + "-" + valor.slice(14);
+
+    telefone.value = valor;
+};
+
+cpf.oninput = () => {
+    let valor = cpf.value.replace(/\D/g, "").slice(0, 11);
+
+    if (valor.length > 3)
+        valor = valor.slice(0, 3) + "." + valor.slice(3);
+    if (valor.length > 7)
+        valor = valor.slice(0, 7) + "." + valor.slice(7);
+    if (valor.length > 11)
+        valor = valor.slice(0, 11) + "-" + valor.slice(11);
+
+    cpf.value = valor;
+
+};

@@ -2,7 +2,6 @@
 package com.sistema.security.validadors;
 
 import com.sistema.models.Solicitacao;
-import com.sistema.models.Modulo;
 import com.sistema.security.ValidacaoStrategy;
 
 public class SolicitacaoValidatorStrategy implements ValidacaoStrategy<Solicitacao> {
@@ -27,12 +26,6 @@ public class SolicitacaoValidatorStrategy implements ValidacaoStrategy<Solicitac
             return false;
         if (!textoValido(entidade.getSenha(), 128))
             return false;
-        if (entidade.getModulos() == null || entidade.getModulos().length == 0) 
-            return false;
-        
-        for (Modulo modulo : entidade.getModulos()) 
-            if (modulo == null) 
-                return false;
         
         return true;
     }

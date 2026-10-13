@@ -20,6 +20,11 @@ public class DepartamentoRepository extends RepositoryTemplate<Departamento> {
     }
 
     @Override
+	protected String getDeleteString(){
+		return "DELETE FROM Departamento WHERE id = ?";
+	}
+
+    @Override
     protected String getSelectByIdString() {
         return "SELECT * FROM Departamento WHERE id = ?";
     }

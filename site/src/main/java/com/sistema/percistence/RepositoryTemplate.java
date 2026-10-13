@@ -81,10 +81,21 @@ public abstract class RepositoryTemplate<T> {
         return json.toString();
     }
 
+    public final boolean delete(long id) throws SQLException {
+        String sql = getDeleteString();
+
+        try (Connection conn = bd.conectarSql();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
     // Métodos abstratos que as subclasses devem implementar
     protected abstract String getInsertionString();
     protected abstract String getUpdateString();
     protected abstract String getSelectByIdString();
+    protected abstract String getDeleteString();
     protected abstract String getSelectAllString(String filtro);
     protected abstract void inserirInsertionParametros(PreparedStatement stmt, T entity) throws SQLException;
     protected abstract void inserirUpdateParametros(PreparedStatement stmt, T entity) throws SQLException;

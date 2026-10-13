@@ -15,6 +15,7 @@ const proximo_btn = document.getElementById("proximo");
 //variaveis para seleção de módulos
 const modulos_btns = Array.from(document.getElementsByClassName("modulo"));
 const salvar_btn = document.getElementById("salvar");
+//variaveis modal
 const tituloModal = document.getElementById("tituloModal");
 const conteudoModal = document.getElementById("conteudoModal");
 const modal = new bootstrap.Modal(document.getElementById("meuModal"));
@@ -73,7 +74,7 @@ salvar_btn.onclick = () => {
             conteudoModal.innerHTML = "Sua solicitação foi registrada com sucesso, enviaremos uma resposta para seu E-mail";
         } else {
             tituloModal.innerHTML = "Ops...";
-            conteudoModal.innerHTML = "Sua solicitação não pode ser registrada, se você já solicitou acesso a nossos serviços espere nossa resposta em seu email, caso contrário tente mais tarde";
+            conteudoModal.innerHTML = r;
         }
         modal.show();
     })

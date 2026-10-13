@@ -48,6 +48,11 @@ public class FuncionarioRepository extends RepositoryTemplate<Funcionario> {
     }
 
     @Override
+	protected String getDeleteString(){
+		return "DELETE FROM Funcionario WHERE id = ?";
+	}
+
+    @Override
     protected String getSelectByIdString() {
         return "SELECT * FROM Funcionarios_Com_Departamento WHERE id = ?";
     }

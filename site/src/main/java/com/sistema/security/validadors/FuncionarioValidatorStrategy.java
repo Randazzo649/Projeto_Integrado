@@ -31,8 +31,6 @@ public class FuncionarioValidatorStrategy implements ValidacaoStrategy<Funcionar
             return false;
         if (!textoValido(entidade.getTelefone(), 20))
             return false;
-        if (entidade.getIdEmpresa() <= 0 || entidade.getIdDepartamento() <= 0)
-            return false;
 
 
         return true;
@@ -54,11 +52,13 @@ public class FuncionarioValidatorStrategy implements ValidacaoStrategy<Funcionar
     }
 
     private boolean cpfValido(String cpf) {
-        if (!textoValido(cpf, 14)) 
+
+
+        if (cpf == null || cpf.trim().isEmpty()) 
             return false;
         
-        String numeros = cpf.replaceAll("\\D", "");
 
+        String numeros = cpf.replaceAll("\\D", "");
         if (!numeros.matches("\\d{11}")) 
             return false;
         if (numeros.matches("(\\d)\\1{10}")) 
@@ -66,21 +66,21 @@ public class FuncionarioValidatorStrategy implements ValidacaoStrategy<Funcionar
         
 
         int soma = 0;
-
-        for (int i = 0; i < 9; i++) 
+        for (int i = 0; i < 9; i++) {
             soma += (numeros.charAt(i) - '0') * (10 - i);
-        
+        }
 
         int digito = 11 - soma % 11;
         digito = digito >= 10 ? 0 : digito;
 
-        if (digito != numeros.charAt(9) - '0') 
+        if (digito != numeros.charAt(9) - '0') {
             return false;
+        }
 
         soma = 0;
-
-        for (int i = 0; i < 10; i++) 
+        for (int i = 0; i < 10; i++) {
             soma += (numeros.charAt(i) - '0') * (11 - i);
+        }
         
         digito = 11 - soma % 11;
         digito = digito >= 10 ? 0 : digito;

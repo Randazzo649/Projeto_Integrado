@@ -71,4 +71,36 @@ public class RHRestController {
             .body(pdf);
     }
 
+    @PostMapping("/salvar_estado_atual")
+    public String salvarEstadoAtualDeFuncionario( @RequestParam("id") long id, @RequestParam("nome") String nome, @RequestParam("data_nascimento") String data_nascimento, @RequestParam("cpf") String cpf, @RequestParam("genero") String genero, @RequestParam("telefone") String telefone, @RequestParam("endereco") String endereco, @RequestParam("data_admissao") String data_admissao, @RequestParam("cargo") String cargo, @RequestParam("departamento") String departamento, @RequestParam("salario") String salario, @RequestParam("email") String email) throws SQLException{
+
+        Funcionario f = fr.findById(id);
+        //não muda o departamento ainda
+        f.setNome(nome);
+        f.setData_nascimento(data_nascimento);
+        f.setCpf(cpf);
+        f.setGenero(genero);
+        f.setTelefone(telefone);
+        f.setEndereco(endereco);
+        f.setData_admissao(data_admissao);
+        f.setCargo(cargo);
+        f.setSalario(salario);
+        f.setEmail(email);
+
+        if( !fvs.isValido(f) )
+            return "0";
+
+        fr.salvarEstadoAtual(f);
+        
+        return "1";
+    }
+
+    @PostMapping("/remover")
+    public String deletarFuncionario(@RequestParam("id") long id) throws SQLException{
+        boolean deletado = fr.delete(id);
+        if(!deletado)
+            return "0";
+        return "1";
+    }
+
 }

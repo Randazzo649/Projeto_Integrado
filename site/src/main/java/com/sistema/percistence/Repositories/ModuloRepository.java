@@ -57,6 +57,11 @@ public class ModuloRepository extends RepositoryTemplate<Modulo> {
     }
 
     @Override
+	protected String getDeleteString(){
+		return "DELETE FROM Modulo WHERE id = ?";
+	}
+
+    @Override
     protected String getSelectByIdString() {
         return "SELECT * FROM Modulo WHERE id = ?";
     }
