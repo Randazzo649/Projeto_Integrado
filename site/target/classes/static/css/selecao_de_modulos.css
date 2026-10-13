@@ -1,0 +1,45 @@
+@import url("header_personalizacoes.css");
+
+main{
+    padding: 50px 80px 0px 80px; 
+}
+
+.modulo{
+    display: flex;
+    width: 97%;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+}
+.modulo img{
+    width: 50px;
+    height: 50px;
+}
+.nao_selecionado{
+    background-color: rgb(223, 223, 223);
+}
+.selecionado{
+    background-color: rgb(255, 210, 225);
+}
+
+
+#salvar{
+    background-color: #fc7642;
+    color: white;
+    border-radius: 15px;
+    padding: 2px 25px;
+    border: none;
+}
+
+input[type="button"]{
+    transition: opacity 0.2s;
+}
+input[type="button"]:hover {
+    opacity: 0.85;
+}

@@ -1,0 +1,15 @@
+#voltar {
+    height: 35px;
+    padding: 0 25px;
+    border: none;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#voltar:hover {
+    background-color: #333333;
+}
