@@ -26,11 +26,12 @@
 
         <section id="empresas" class="d-flex align-items-center flex-column">
             <div id="item-empresa" class="accordion">
+
                 <!--ITEM ACCORDION-->
                 <div th:each="e : ${empresas}" class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#empresa" aria-expanded="false" aria-controls="empresa">
+                            th:data-bs-target="'#empresa_'+${e.id}" aria-expanded="false" th:aria-controls="'empresa_'+${e.id}">
                             <div class="empresa-header">
                                 <div>
                                     <strong th:text="${e.nome}">NOME DA EMPRESA</strong>
@@ -39,7 +40,7 @@
                             </div>
                         </button>
                     </h2>
-                    <div id="empresa" class="accordion-collapse collapse">
+                    <div th:id="'empresa_'+${e.id}" class="accordion-collapse collapse">
                         <div class="accordion-body">
                             <div class="dados-linha">
                                 <div>
@@ -79,7 +80,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div><br>
 
             </div>
         </section>

@@ -109,8 +109,7 @@ public class EmpresaRestController {
     @PostMapping ("/desativar")
     public String desativarEmpresa(HttpSession sessao, @RequestParam("id") long id) throws SQLException{
         Empresa empresa = (Empresa) er.findById(id);
-        empresa.setAtivo(false);
-        er.salvarEstadoAtual(empresa);
+        er.excluirEmpresa(empresa.getId());
         return "1";
     }
 }

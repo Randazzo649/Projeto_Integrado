@@ -227,6 +227,29 @@ END $$
 DELIMITER ;
 
 
+DROP PROCEDURE IF EXISTS excluir_empresa;
+DELIMITER $$
+CREATE PROCEDURE excluir_empresa(IN p_id BIGINT)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN ROLLBACK; RESIGNAL; END;
+    START TRANSACTION;
+    DELETE v FROM Venda v JOIN Funcionario f ON f.id = v.id_funcionario WHERE f.id_empresa = p_id;
+    DELETE pf FROM ProdutoFotos pf JOIN Produto p ON p.id = pf.id_produto JOIN Estoque e ON e.id = p.id_estoque WHERE e.id_empresa = p_id;
+    DELETE p FROM Produto p JOIN Estoque e ON e.id = p.id_estoque WHERE e.id_empresa = p_id;
+    DELETE FROM Conta WHERE id_empresa = p_id;
+    DELETE FROM Movimentacao_Financeira WHERE id_empresa = p_id;
+    DELETE FROM Funcionario WHERE id_empresa = p_id;
+    DELETE FROM Departamento WHERE id_empresa = p_id;
+    DELETE FROM Estoque WHERE id_empresa = p_id;
+    DELETE FROM Empresa_has_modulo WHERE id_empresa = p_id;
+    DELETE FROM Usuario WHERE id_empresa = p_id;
+    DELETE FROM Empresa WHERE id = p_id;
+    COMMIT;
+END $$
+DELIMITER ;
+
+/* PREPARAÇÃO INICIAL */
+
 INSERT INTO Usuario(nome, email, senha, curador) VALUES ('admin', 'admin@gmail.com', "$argon2id$v=19$m=8192,t=2,p=1$pqgiLpo6XpIZXratcbjq8A$nQfl7qlD0qSiEHl6TPrmKv282L/XblC/8PIp7Z79hAw", 1);
 INSERT INTO Modulo(nome, descricao, imagem) VALUES ("FINANCEIRO", "Controle todas as entradas, saídas e movimentações de dinheiro de sua empresa", "/imgs/receber.png");
 INSERT INTO Modulo(nome, descricao, imagem) VALUES ("RECURSOS HUMANOS", "Gerencie com facilidade funcionários, cargos, férias, folhas de pagamento e benefícios", "/imgs/RH.png");

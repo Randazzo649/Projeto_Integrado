@@ -23,7 +23,7 @@ const conteudoModal = document.getElementById("conteudoModal");
 
 //comunicação com o back-end
 salvar_btn.onclick = () => {
-
+    
     const foto = file_in.files[file_in.files.length - 1];
     const cor = "rgb(" + rgb.value + ")";
 

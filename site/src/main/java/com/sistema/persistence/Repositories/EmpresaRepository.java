@@ -6,8 +6,19 @@ import java.sql.SQLException;
 
 import com.sistema.models.Empresa;
 import com.sistema.persistence.RepositoryTemplate;
+import com.sistema.persistence.configs.DataBaseConfigSingleton;
 
 public class EmpresaRepository extends RepositoryTemplate<Empresa>{
+
+
+    public void excluirEmpresa(long id) throws SQLException {
+        String sql = "CALL excluir_empresa(?)";
+        try (PreparedStatement stmt = DataBaseConfigSingleton.getInstance().conectarSql().prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.execute();
+        }
+    }
+
 
     @Override
     protected String getInsertionString() {
