@@ -36,4 +36,11 @@ public class UsuariosRestController {
         return usuario.isCurador() ? "/curadoria/home" : "/empresa/home";
     }
 
+    @PostMapping("/edicao")
+    public String alterarPerfil(HttpSession sessao, @RequestParam("foto") String foto) throws SQLException{
+        Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+        usuarioRepository.findById(usuario.getId());
+        return "1";
+    }
+
 }
