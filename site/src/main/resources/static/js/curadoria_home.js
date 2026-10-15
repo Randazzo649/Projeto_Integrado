@@ -1,5 +1,7 @@
 const novas_solics_lnk_btn = document.getElementById("link_novas_solics");
+const historico_solicitacoes_lnk_btn = document.getElementById("link_historico_solicitacoes");
 const btn_remocao = document.getElementById("remocao");
+
 
 novas_solics_lnk_btn.onclick = () => {
     window.location.href = URL_SITE + "/curadoria/solicitacoes";
@@ -7,4 +9,8 @@ novas_solics_lnk_btn.onclick = () => {
 
 btn_remocao.onclick = () => {
     window.location.href = URL_SITE + "/curadoria/empresas";
+}
+
+historico_solicitacoes_lnk_btn.onclick = () => {
+    window.location.href = URL_SITE + "/curadoria/solicitacoes_respondidas";
 }

@@ -1,0 +1,18 @@
+1- cadastro solicitação = solicitacao_cadastro.html
+2- cadastro Empresa = solicitacoe_avaliacao.html
+3- cadastro Funcionario = cadastro_funcionario.html
+4- update Funcionario = quadro_funcionarios.html
+5- update Usuario = personalizacao_usuario.html
+6- update Empresa = personalizacao_empresa.html
+7- delete Empresa = quadro_empresas.html
+8- delete Solicitacao = solicitacoes_respondidas.html
+9- visualização de funcionarios = relatorio_funcionarios.html
+10- delete de Funcionario = quadro_funcionarios.html
+
+CRUDS completos:
+
+Funcionario
+Empresa
+Usuario
+
+OBS: Muitas dessas páginas tem mais de uma parte de CRUD

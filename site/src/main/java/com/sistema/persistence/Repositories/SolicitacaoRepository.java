@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.sistema.models.Solicitacao;
 import com.sistema.persistence.RepositoryTemplate;
+import com.sistema.persistence.configs.DataBaseConfigSingleton;
 
 
 public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
@@ -28,6 +29,14 @@ public class SolicitacaoRepository extends RepositoryTemplate<Solicitacao>{
             
             stmt.execute();
         } 
+    }
+
+    public void excluirSolicitacao(long id) throws SQLException {
+        String sql = "CALL excluir_solicitacao(?)";
+        try (PreparedStatement stmt = DataBaseConfigSingleton.getInstance().conectarSql().prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.execute();
+        }
     }
 
     public void adicionarModulos(String[] modulos, long idSolicitacao) throws SQLException{

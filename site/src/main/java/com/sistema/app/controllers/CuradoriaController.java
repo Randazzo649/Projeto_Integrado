@@ -40,6 +40,17 @@ public class CuradoriaController {
         m.addAttribute("solicitacoes", solicitacoes);
         return "solicitacoes_avaliacao.html";
     }
+
+    @GetMapping("/solicitacoes_respondidas")
+    public String fornecerPaginaDeSolicitacoesJaRespondidas(HttpSession sessao, Model m) throws SQLException{
+        Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+        ArrayList<Solicitacao> solicitacoes = solicitacaoRepository.findAll("WHERE data_decis IS NOT NULL");
+
+        m.addAttribute("u", usuario);
+        m.addAttribute("solicitacoes", solicitacoes);
+        return "solicitacoes_respondidas.html";
+    }
+
     @GetMapping("/empresas")
     public String retornarPaginaDeQuadroDeEmpresas(HttpSession sessao, Model m) throws SQLException{
         Usuario usuario = (Usuario) sessao.getAttribute("usuario");

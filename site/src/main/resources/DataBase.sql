@@ -248,6 +248,15 @@ BEGIN
 END $$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS excluir_solicitacao;
+DELIMITER $$
+CREATE PROCEDURE excluir_solicitacao(IN p_id BIGINT)
+BEGIN
+    DELETE FROM Solicitacao_has_modulo WHERE id_solicitacao = p_id;
+    DELETE FROM Solicitacao WHERE id = p_id;
+END $$
+DELIMITER ;
+
 /* PREPARAÇÃO INICIAL */
 
 INSERT INTO Usuario(nome, email, senha, curador) VALUES ('admin', 'admin@gmail.com', "$argon2id$v=19$m=8192,t=2,p=1$pqgiLpo6XpIZXratcbjq8A$nQfl7qlD0qSiEHl6TPrmKv282L/XblC/8PIp7Z79hAw", 1);
