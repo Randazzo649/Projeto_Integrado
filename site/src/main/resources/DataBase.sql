@@ -187,7 +187,7 @@ BEGIN
 	INSERT INTO Empresa(razao, cnpj, nome, telefone, endereco, ativo) VALUES (razao_in, cnpj_in, nome_in, telefone_in, endereco_in, 1);
 	SET empresa_id = LAST_INSERT_ID();
     
-	INSERT INTO Usuario(email, senha, curador, id_empresa, funcao) VALUES (email_usuario, hash_senha, 0, empresa_id, "adm");
+	INSERT INTO Usuario(email, senha, curador, id_empresa, funcao, ativo) VALUES (email_usuario, hash_senha, 0, empresa_id, "adm", 1);
 	SET usuario_id = LAST_INSERT_ID();
     
     UPDATE Solicitacao SET data_decis = NOW(), aprovada = 1 WHERE id = id_solicitacao;
