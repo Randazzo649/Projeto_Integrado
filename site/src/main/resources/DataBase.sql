@@ -264,7 +264,7 @@ DELIMITER ;
 
 /* PREPARAÇÃO INICIAL */
 
-INSERT INTO Usuario(nome, email, senha, curador) VALUES ('admin', 'admin@gmail.com', "$argon2id$v=19$m=8192,t=2,p=1$pqgiLpo6XpIZXratcbjq8A$nQfl7qlD0qSiEHl6TPrmKv282L/XblC/8PIp7Z79hAw", 1);
+INSERT INTO Usuario(nome, email, senha, curador, ativo) VALUES ('admin', 'admin@gmail.com', "$argon2id$v=19$m=8192,t=2,p=1$pqgiLpo6XpIZXratcbjq8A$nQfl7qlD0qSiEHl6TPrmKv282L/XblC/8PIp7Z79hAw", 1, 1);
 INSERT INTO Modulo(nome, descricao, imagem) VALUES ("FINANCEIRO", "Controle todas as entradas, saídas e movimentações de dinheiro de sua empresa", "/imgs/receber.png");
 INSERT INTO Modulo(nome, descricao, imagem) VALUES ("RECURSOS HUMANOS", "Gerencie com facilidade funcionários, cargos, férias, folhas de pagamento e benefícios", "/imgs/RH.png");
 INSERT INTO Modulo(nome, descricao, imagem) VALUES ("COMERCIAL", "Administre seus clientes e gerencie suas vendas, cotações e contratos", "/imgs/carrinho.png");
