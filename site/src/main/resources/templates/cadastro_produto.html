@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>UnitHub</title>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/css/base.css}">
+        <link rel="stylesheet" th:href="@{/css/cadastro_produto.css}">
+    </head>
+    <body>
+        <header>
+            <div id="superior" th:style=" 'background-color: ' + ${e.getCor} + ';'" class="d-flex justify-content-between align-items-center px-5 py-3">
+                <div>
+                    <img th:src="@{${e.getFoto}}" alt="" id="logo">
+                </div>
+                <div id="usuario_infos"> 
+                    <button id="usuario_foto" th:if="${u.foto != null}"><img id="usuario_foto_img" th:src="@{${u.foto}}" alt=""></button>
+                    <button id="usuario_foto" th:if="${u.foto == null}"><img id="usuario_foto_img" th:src="@{/imgs/foto.png}" alt=""></button> 
+                    <span th:text="${u.nome}">nome</span>
+                </div>
+            </div>
+        </header>
+        <main class="container-fluid p-5">
+            <div class="conteudo">
+                <h1><strong>CADASTRO</strong></h1>
+                <h3 class="ms-3">ADICIONAR PRODUTO</h3>
+                <div id="form">
+                    <!-- INICIO DO FORMULARIO -->
+                    <div class="row g-1">
+                        <div class="col-md-8">
+                            <label for="nome_input">Nome</label>
+                            <input type="text" id="nome_input" class="form-control" maxlength="45" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tipo_input">Tipo</label>
+                            <input type="text" id="tipo_input" class="form-control" maxlength="45" required>
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <div class="col-md-4">
+                            <label for="preco_input">Preço</label>
+                            <input type="number" id="preco_input" class="form-control" min="0" step="0.01" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="quantidade_input">Quantidade</label>
+                            <input type="number" id="quantidade_input" class="form-control" min="0" step="1" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="Unidae_input">Unidae</label>
+                            <input type="text" id="Unidae_input" class="form-control" maxlength="45" required>
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <div class="col-md-4">
+                            <label for="material_input">Material</label>
+                            <input type="text" id="material_input" class="form-control" maxlength="45">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tamanho_input">Tamanho</label>
+                            <input type="text" id="tamanho_input" class="form-control" maxlength="45">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cor_input">Cor</label>
+                            <input type="text" id="cor_input" class="form-control" maxlength="45">
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <div class="col-md-6">
+                            <label for="estoque_input">Estoque</label>
+                            <input type="text" class="form-control" id="estoque_input">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="categoria">Categoria</label>
+                            <input type="text" class="form-control" id="categoria" maxlength="20">
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <div class="col-12">
+                            <label for="descricao_input">Descrição</label>
+                            <input type="text" id="descricao_input" class="form-control" maxlength="45" required>
+                        </div>
+                    </div>
+                    <div class="row g-1">
+                        <div class="col-12">
+                            <label for="fotos_input">Fotos do produto</label>
+                            <label for="fotos_input" class="area-upload" id="area_upload">
+                                <div class="conteudo-upload" id="conteudo_upload">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                        <path d="M3 10h18"/>
+                                        <path d="M12 17v-5"/>
+                                        <path d="m9.5 14.5 2.5-2.5 2.5 2.5"/>
+                                    </svg>
+                                    <span class="texto-upload">Clique ou arraste e solte as fotos do produto aqui</span>
+                                    <small>PNG, JPG ou JPEG</small>
+                                </div>
+                                <div id="preview_fotos" class="preview-fotos" hidden></div>
+                            </label>
+                            <input type="file" id="fotos_input" accept=".png,.jpg,.jpeg" multiple hidden>
+                            <button type="button" id="remover_fotos" hidden>Remover fotos</button>
+                        </div>
+                    </div>
+                    <div class="botoes d-flex justify-content-end gap-3">
+                        <button type="reset" id="cancelar_btn">CANCELAR</button>
+                        <button type="button" id="salvar_btn">SALVAR</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL DE CONFIRMAÇÃO DE ENVIO -->
+            <div class="modal fade" id="meuModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="tituloModal"></h3>
+
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal">
+                            </button>
+                        </div>
+
+                        <div id="conteudoModal" class="modal-body d-flex gap-4">
+                            
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+        <script th:src="@{/js/config.js}"></script>
+        <script th:src="@{/js/cadastro_produto.js}"></script>
+    </body>
+</html>

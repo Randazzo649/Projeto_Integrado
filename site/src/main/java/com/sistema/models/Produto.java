@@ -3,16 +3,17 @@ package com.sistema.models;
 public class Produto {
     private long id;
     private String nome;
-    private double preco;
+    private float preco;
     private String descricao;
     private String tipo;
-    private String quantidade;
+    private int quantidade;
+    private String unidadeMedida;
     private String categoria;
     private String material;
     private String tamanho;
     private String cor;
+    private String foto;
     private long id_estoque;
-    private long id_rel_estoque;
 
     public void setId(long id) {
         this.id = id;
@@ -26,10 +27,10 @@ public class Produto {
     public String getNome() {
         return this.nome;
     }
-    public void setPreco(double preco) {
+    public void setPreco(float preco) {
         this.preco = preco;
     }
-    public double getPreco() {
+    public float getPreco() {
         return this.preco;
     }
     public void setDescricao(String descricao) {
@@ -44,10 +45,10 @@ public class Produto {
     public String getTipo() {
         return this.tipo;
     }
-    public void setQuantidade(String quantidade) {
+    public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    public String getQuantidade() {
+    public int getQuantidade() {
         return this.quantidade;
     }
     public void setCategoria(String categoria) {
@@ -80,10 +81,17 @@ public class Produto {
     public long getIdEstoque() {
         return this.id_estoque;
     }
-    public void setIdRelEstoque(long id_rel_estoque) {
-        this.id_rel_estoque = id_rel_estoque;
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
-    public long getIdRelEstoque() {
-        return this.id_rel_estoque;
+    public String getUnidadeMedida() {
+        return unidadeMedida;
     }
+    public String getFoto(){
+        return this.foto;
+    }
+    public void setFoto(String foto){
+        this.foto = foto;
+    }
+
 }

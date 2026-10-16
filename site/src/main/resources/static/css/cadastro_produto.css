@@ -1,0 +1,199 @@
+@import url("header_personalizacoes.css");
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    background-color: #ffffff;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.conteudo {
+    padding: 0 1.5%;
+}
+
+main h1 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    margin: 0;
+    color: #111;
+}
+
+main h3 {
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 32px;
+    color: #222;
+}
+
+#form {
+    padding-left: 1.5%;
+}
+
+main .row {
+    margin-bottom: 20px;
+}
+
+main label {
+    display: block;
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    font-weight: 500;
+    color: #222;
+    margin-left: 12px;
+    margin-bottom: 6px;
+}
+
+main .form-control {
+    width: 100%;
+    height: 30px;
+    min-height: 30px;
+    border: 1px solid #bdbdbd;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    padding: 4px 16px;
+    box-shadow: none;
+    background-color: #fff;
+}
+
+main .form-control:focus {
+    border-color: #888;
+    box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.1);
+}
+
+main input[type="number"] {
+    appearance: textfield;
+}
+
+main input[type="number"]::-webkit-inner-spin-button,
+main input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+.area-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    padding: 18px;
+    border: 1px solid #bdbdbd;
+    border-radius: 19px;
+    background-color: #eaeaea;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.area-upload:hover,
+.area-upload.arrastando {
+    border-color: #555;
+    background-color: #dedede;
+}
+
+.conteudo-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.conteudo-upload svg {
+    flex-shrink: 0;
+}
+
+.texto-upload {
+    max-width: 240px;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.conteudo-upload small {
+    color: #666;
+    font-size: 10px;
+}
+
+.preview-fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.preview-fotos img {
+    width: 110px;
+    height: 110px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    object-fit: contain;
+    background-color: #fff;
+}
+
+#remover_fotos {
+    display: block;
+    margin: 7px auto 0;
+    padding: 4px 8px;
+    border: none;
+    background: transparent;
+    color: #c00000;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#remover_fotos:hover {
+    text-decoration: underline;
+}
+
+.botoes {
+    margin-top: 30px;
+    gap: 16px;
+}
+
+.botoes button {
+    border: none;
+    border-radius: 24px;
+    min-height: 30px;
+    padding: 0 28px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+#cancelar_btn {
+    background-color: #ef5b96;
+}
+
+#salvar_btn {
+    background-color: #f8783d;
+}
+
+.botoes button:hover {
+    opacity: 0.85;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+    main.container-fluid {
+        padding: 24px !important;
+    }
+
+    .conteudo {
+        padding: 0;
+    }
+
+    #form {
+        padding-left: 0;
+    }
+
+    .botoes button {
+        padding: 0 18px;
+    }
+}

@@ -105,36 +105,21 @@ CREATE TABLE IF NOT EXISTS Estoque(
     FOREIGN KEY (id_empresa) REFERENCES Empresa(id)
 );
 
-CREATE TABLE IF NOT EXISTS RelatorioEstoque(
-	id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(45) NOT NULL,
-    quantidade INT NOT NULL,
-    data DATETIME,
-    observacao TEXT
-);
-
 CREATE TABLE IF NOT EXISTS Produto(
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
-    preco DECIMAL(10,2) NOT NULL,
+    preco FLOAT NOT NULL,
     descricao VARCHAR(45) NOT NULL,
 	tipo VARCHAR(45) NOT NULL,
     quantidade INT NOT NULL,
+    unidade_medida VARCHAR(10) NOT NULL,
+    foto VARCHAR(70),
     categoria VARCHAR(45),
     material VARCHAR(45),
     tamanho VARCHAR(45),
     cor VARCHAR(45),
     id_estoque BIGINT NOT NULL,
-    id_relatorio_estoque BIGINT NOT NULL,
-    FOREIGN KEY (id_estoque) REFERENCES Estoque(id),
-    FOREIGN KEY (id_relatorio_estoque) REFERENCES RelatorioEstoque(id)
-);
-
-CREATE TABLE IF NOT EXISTS ProdutoFotos(
-	id BIGINT PRIMARY KEY AUTO_INCREMENT,
-    foto VARCHAR(45) NOT NULL,
-    id_produto BIGINT NOT NULL,
-    FOREIGN KEY (id_produto) REFERENCES Produto(id)
+    FOREIGN KEY (id_estoque) REFERENCES Estoque(id)
 );
 
 /*Modulo de Venda*/
@@ -227,6 +212,7 @@ END $$
 DELIMITER ;
 
 
+
 DROP PROCEDURE IF EXISTS excluir_empresa;
 DELIMITER $$
 CREATE PROCEDURE excluir_empresa(IN p_id BIGINT)
@@ -234,7 +220,6 @@ BEGIN
     DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN ROLLBACK; RESIGNAL; END;
     START TRANSACTION;
     DELETE v FROM Venda v JOIN Funcionario f ON f.id = v.id_funcionario WHERE f.id_empresa = p_id;
-    DELETE pf FROM ProdutoFotos pf JOIN Produto p ON p.id = pf.id_produto JOIN Estoque e ON e.id = p.id_estoque WHERE e.id_empresa = p_id;
     DELETE p FROM Produto p JOIN Estoque e ON e.id = p.id_estoque WHERE e.id_empresa = p_id;
     DELETE FROM Conta WHERE id_empresa = p_id;
     DELETE FROM Movimentacao_Financeira WHERE id_empresa = p_id;
@@ -248,6 +233,7 @@ BEGIN
 END $$
 DELIMITER ;
 
+
 DROP PROCEDURE IF EXISTS excluir_solicitacao;
 DELIMITER $$
 CREATE PROCEDURE excluir_solicitacao(IN p_id BIGINT)
@@ -256,6 +242,25 @@ BEGIN
     DELETE FROM Solicitacao WHERE id = p_id;
 END $$
 DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS cadastrar_produto;
+DELIMITER $$
+CREATE PROCEDURE cadastrar_produto(IN p_nome VARCHAR(45), IN p_preco FLOAT, IN p_descricao VARCHAR(45), IN p_tipo VARCHAR(45), IN p_quantidade INT, IN p_unidade_medida VARCHAR(10), IN p_foto VARCHAR(70), IN p_categoria VARCHAR(45), IN p_material VARCHAR(45), IN p_tamanho VARCHAR(45), IN p_cor VARCHAR(45), IN p_nome_estoque VARCHAR(45), IN p_id_empresa BIGINT)
+BEGIN
+    DECLARE v_id_estoque BIGINT DEFAULT NULL;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN ROLLBACK; RESIGNAL; END;
+    START TRANSACTION;
+    SELECT id INTO v_id_estoque FROM Estoque WHERE nome = p_nome_estoque AND id_empresa = p_id_empresa LIMIT 1;
+    IF v_id_estoque IS NULL THEN
+        INSERT INTO Estoque(nome, id_empresa) VALUES (p_nome_estoque, p_id_empresa);
+        SET v_id_estoque = LAST_INSERT_ID();
+    END IF;
+    INSERT INTO Produto(nome, preco, descricao, tipo, quantidade, unidade_medida, foto, categoria, material, tamanho, cor, id_estoque) VALUES (p_nome, p_preco, p_descricao, p_tipo, p_quantidade, p_unidade_medida, p_foto, p_categoria, p_material, p_tamanho, p_cor, v_id_estoque);
+    COMMIT;
+END $$
+DELIMITER ;
+
 
 /* PREPARAÇÃO INICIAL */
 
